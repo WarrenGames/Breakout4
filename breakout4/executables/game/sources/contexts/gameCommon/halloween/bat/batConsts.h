@@ -1,0 +1,15 @@
+#ifndef DUELS_BAT_CONSTS_H
+#define DUELS_BAT_CONSTS_H
+
+namespace bat{
+
+constexpr unsigned int WING_IMG_NUMBER = 5;
+constexpr int DIST_WINGS_FROM_FACE_W = 16;
+constexpr int DIST_WINGS_FROM_FACE_H = 40;
+enum{FACE_EFFORT, FACE_DISAPOINTED, FACE_HAPPY, FACE_MAX};
+
+enum{MOVE_OFF, MOVE_FROM_RIGHT, MOVE_FROM_LEFT};
+
+}
+
+#endif //DUELS_BAT_CONSTS_H

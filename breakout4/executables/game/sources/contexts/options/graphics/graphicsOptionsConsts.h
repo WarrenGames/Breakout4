@@ -1,0 +1,14 @@
+#ifndef OPTIONS_MENU_GRAPHICS_CONSTS_H
+#define OPTIONS_MENU_GRAPHICS_CONSTS_H
+
+namespace optionsMenu{
+	enum{
+		TXT_GR_TITLE,
+		TXT_GR_BOX_NAME,
+		TXT_GR_HINT,
+		TXT_GR_QUIT,
+		TXT_GR_MAX
+	};
+}
+
+#endif //OPTIONS_MENU_GRAPHICS_CONSTS_H
