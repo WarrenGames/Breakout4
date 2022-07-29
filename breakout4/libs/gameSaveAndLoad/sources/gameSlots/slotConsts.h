@@ -1,0 +1,41 @@
+#ifndef SLOT_CONSTS_H
+#define SLOT_CONSTS_H
+
+#include "consts/constexprScreen.h"
+
+constexpr int SAVE_SLOT_SQR_W = GAME_SCREEN_WIDTH / 2 - SQR_SIZE * 2;
+constexpr int SAVE_SLOT_SQR_H = SQR_SIZE;
+
+constexpr int SAVE_SLOT_LINES_NUM = 5;
+constexpr int SAVE_SLOT_ROW_NUM = 2;
+
+constexpr std::size_t SLOTS_NUMBER = SAVE_SLOT_LINES_NUM * SAVE_SLOT_ROW_NUM;
+
+constexpr char CAMPAIGN_INFOS_STRING[] = "Campaign and date infos";
+constexpr char SCORE_AND_COINS_STRING[] = "Score and coins infos";
+
+enum{ 	SAVE_IND_CAMPAIGN_TYPE,				// = 0
+		SAVE_IND_SKILL_LEVEL,
+		SAVE_IND_PLAYER_LIVES,				// = 2
+		SAVE_IND_RACKET_SPEED,
+		SAVE_IND_RACKET_SIZE,				// = 4
+		SAVE_IND_SCORE,
+		SAVE_IND_BONUS_COIN_NUMBER,			// = 6
+		SAVE_IND_RIM_STATE,
+		SAVE_IND_LEVEL_CURSOR,				// = 8
+		SAVE_IND_BAG_BONUS,
+		SAVE_IND_MAX 						// = 10
+};
+
+enum{	SAVE_NAME_FOCUSING_ON_SAVING,		// = 0
+		SAVE_NAME_FOCUSING_ON_LOADING,
+		SAVE_NAME_CAMPAIGN_WITH_SHOP,		// = 2
+		SAVE_NAME_CAMPAIGN_NO_SHOP,
+		SAVE_NAME_SCORE,					// = 4
+		SAVE_NAME_COINS_NUMBER,
+		SAVE_NAME_SAVING_GAVE_AN_ERROR,		// = 6
+		SAVE_NAME_THIS_SLOT_IS_FREE,
+		SAVE_NAME_QUIT_MENU,				// = 8
+		SAVE_NAME_FOCUSING_GAME_MAX};		// = 9
+
+#endif //SLOT_CONSTS_H

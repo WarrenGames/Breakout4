@@ -1,0 +1,6 @@
+#ifndef SDL_MIXER_CONSTS_H
+#define SDL_MIXER_CONSTS_H
+
+constexpr unsigned SDL_MIXER_CHANNELS_NUM = 16;
+
+#endif //SDL_MIXER_CONSTS_H

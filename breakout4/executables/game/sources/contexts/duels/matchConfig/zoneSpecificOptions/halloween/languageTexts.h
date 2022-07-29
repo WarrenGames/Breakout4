@@ -1,0 +1,20 @@
+#ifndef DUELS_HALLOWEEN_LANGUAGE_TEXTS_H
+#define DUELS_HALLOWEEN_LANGUAGE_TEXTS_H
+
+namespace language{
+	namespace halloween{
+		enum{ 	PUMPKIN_GRANULARITY,		// = 0
+				QUIT_SCREEN,
+				RED_PUMPKIN,
+				GRAY_PUMPKIN,
+				BLUE_PUMPKIN,				// = 4
+				YELLOW_PUMPKIN,
+				DRAW_WALLPAPER,
+				WALLPAPER_THEME,
+				SPECIAL_ZONE_BONUS,			// = 8
+				MAX							// = 9
+		};
+	}
+}
+
+#endif //DUELS_HALLOWEEN_LANGUAGE_TEXTS_H
