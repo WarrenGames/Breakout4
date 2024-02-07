@@ -1,0 +1,1 @@
+constexpr int SQR_SIZE = 72;
