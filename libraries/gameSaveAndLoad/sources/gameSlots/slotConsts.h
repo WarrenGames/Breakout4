@@ -3,13 +3,13 @@
 
 #include "consts/constexprScreen.h"
 
-constexpr int SaveSlotSquareWidth = GameScreenWidth / 2 - SQR_SIZE * 2;
+constexpr int SaveSlotSquareWidth = GameScreenWidth / 2 - SQR_SIZE * 3;
 constexpr int SaveSlotSquareHeight = SQR_SIZE;
 
 constexpr int SaveSlotLinesNumber = 5;
-constexpr int SaveSlotRowNumber = 2;
+constexpr int SaveSlotRowsNumber = 2;
 
-constexpr std::size_t SlotsNumber = SaveSlotLinesNumber * SaveSlotRowNumber;
+constexpr std::size_t SlotsNumber = SaveSlotLinesNumber * SaveSlotRowsNumber;
 
 constexpr char CampaignInfosString[] = "Campaign and date infos";
 constexpr char ScoreAndCoinsString[] = "Score and coins infos";

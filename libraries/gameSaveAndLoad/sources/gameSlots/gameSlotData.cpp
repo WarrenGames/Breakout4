@@ -63,6 +63,5 @@ void GameSlotData::addDateToString()
 
 void GameSlotData::setScoreAndCoins(const TextsBlocks& localeTexts)
 {
-
 	scoreAndCoinsInfos = localeTexts[SaveNameScore] + std::to_string( score ) + " -- " + localeTexts[SaveNameCoinsNumber] + std::to_string(bonusCoinNumber);
 }

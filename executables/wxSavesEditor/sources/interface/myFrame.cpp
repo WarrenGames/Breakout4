@@ -36,8 +36,8 @@ MyFrame::MyFrame(AppStartData& appStartData):
 	atStartLogging(appStartData);
 	
 	bindMenuBar();
-	
 	setTextCtrlWithLoadedSlot(savesSlots.slot);
+	initializeHeadersThumbnail();
 }
 
 void MyFrame::bindMenuBar()
@@ -84,13 +84,11 @@ void MyFrame::bindRimSize(wxCommandEvent& event)
 
 void MyFrame::bindCampaignHeaderMenu(wxCommandEvent& event)
 {
+	headerInterface.setTextCtrlDataFromGameSlot(savesSlots.slot);
 	if( savesSlots.slot.campaignType < onePlGame::CampaignMax )
 	{
 		try{
-			savesSlots.slot.setCampaign(headersTexts);
-			savesSlots.slot.addDateToString();
-			headerInterface.eraseTextCtrlContent(HeaderCampaignAndDate);
-			headerInterface.appendTextToWidget(savesSlots.slot.campaignAndDateInfos, HeaderCampaignAndDate);
+			setCampaignHeader(savesSlots.slot);
 		}
 		catch( const std::exception& e )
 		{
@@ -108,18 +106,19 @@ void MyFrame::bindCampaignHeaderMenu(wxCommandEvent& event)
 	}
 }
 
+void MyFrame::setCampaignHeader(GameSlotData& slot)
+{
+	gameObjectsInterface.copyTextCtrlToSlot(slot);
+	savesSlots.slot.setCampaign(headersTexts);
+	savesSlots.slot.addDateToString();
+	headerInterface.eraseTextCtrlContent(HeaderCampaignAndDate);
+	headerInterface.appendTextToWidget(slot.campaignAndDateInfos, HeaderCampaignAndDate);
+}
+
 void MyFrame::bindScoreHeaderMenu(wxCommandEvent& event)
 {
 	try{
-		savesSlots.slot.setScoreAndCoins(headersTexts);
-		headerInterface.eraseTextCtrlContent(HeaderScoreAndCoin);
-		if( savesSlots.slot.scoreAndCoinsInfos.empty() )
-		{
-			throw std::runtime_error{"Error: the 'scoreAndCoinsInfos' std::string is empty."};
-		}
-		else{
-			headerInterface.appendTextToWidget(savesSlots.slot.scoreAndCoinsInfos, HeaderScoreAndCoin);
-		}
+		setScoreHeader(savesSlots.slot);
 	}
 	catch( const std::exception& e )
 	{
@@ -128,6 +127,14 @@ void MyFrame::bindScoreHeaderMenu(wxCommandEvent& event)
 			*logWindow << "Error: exception thrown while setting scoreAndCoin header string: " << e.what() << " .\n";
 		}
 	}
+}
+
+void MyFrame::setScoreHeader(GameSlotData& slot)
+{
+	gameObjectsInterface.copyTextCtrlToSlot(slot);
+	savesSlots.slot.setScoreAndCoins(headersTexts);
+	headerInterface.eraseTextCtrlContent(HeaderScoreAndCoin);
+	headerInterface.appendTextToWidget(slot.scoreAndCoinsInfos, HeaderScoreAndCoin);
 }
 
 void MyFrame::checkSlotDataCanBeSaved()
@@ -162,8 +169,10 @@ void MyFrame::setTextCtrlWithLoadedSlot(GameSlotData& slot)
 	}
 }
 
-void MyFrame::runAssignationsToSlot(GameSlotData& slot) const
+void MyFrame::runAssignationsToSlot(GameSlotData& slot)
 {
+	setCampaignHeader(slot);
+	setScoreHeader(slot);
 	headerInterface.copyTextCtrlToSlot(HeaderCampaignAndDate, "Header campaign and date", slot.campaignAndDateInfos);
 	headerInterface.copyTextCtrlToSlot(HeaderScoreAndCoin, "Header score and coin", slot.scoreAndCoinsInfos);
 	gameObjectsInterface.copyTextCtrlToSlot(slot);
@@ -251,5 +260,23 @@ void MyFrame::atStartLogging(const AppStartData& appStartData)
 		*logWindow << "Save headers texts loading status: " << appStartData.headersTexts << " \n";
 		*logWindow << "Game objects texts loading status: " << appStartData.gameObjectsTexts << " \n";
 		*logWindow << "Bag bonuses texts loading status: " << appStartData.bagBonusesTexts << " \n";
+	}
+}
+
+void MyFrame::initializeHeadersThumbnail()
+{
+	try{
+		setCampaignHeader(savesSlots.slot);
+		setScoreHeader(savesSlots.slot);
+	}
+	catch( const std::exception& e )
+	{
+		if( logWindow )
+		{
+			*logWindow << "Error: couldn't initialize header thumnail because: " << e.what() << " .\n";
+		}
+		else{
+			logs.error << "Error: couldn't initialize header thumnail because: " << e.what() << " .\n";
+		}
 	}
 }

@@ -8,12 +8,14 @@ struct GameSaveSlots
 {
 	GameSlotData slot;
 	
-	GameSaveSlots() = default;
+	GameSaveSlots();
 	~GameSaveSlots() = default;
 	GameSaveSlots( const GameSaveSlots& ) = delete;
 	GameSaveSlots& operator= ( const GameSaveSlots& ) = delete;
 	GameSaveSlots( GameSaveSlots&& ) = default;
 	GameSaveSlots& operator= ( GameSaveSlots&& ) = default;
+	
+	void giveSlotCoherentValues();
 	
 	void checkSlot() const;
 	void checkSkillLevelValue() const;

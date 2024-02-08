@@ -18,6 +18,7 @@ private:
 	const sdl2::Font arial;
 	const sdl2::Font fancyFont;
 	TextureCombo title;
+	const sdl2::TextureLoader slotSquareTexture;
 	TextButton quitButton;
 	std::vector< GameSlotData > slotsData;
 	std::vector< SlotGraphics > slotsGraphics;

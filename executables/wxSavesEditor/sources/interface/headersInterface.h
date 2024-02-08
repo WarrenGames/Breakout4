@@ -24,7 +24,7 @@ public:
 	HeaderInterface& operator= ( const HeaderInterface& ) = delete;
 	HeaderInterface( HeaderInterface&& ) = default;
 	HeaderInterface& operator= ( HeaderInterface&& ) = default;
-	
+
 	void setTextCtrlDataFromGameSlot(const GameSlotData& slot);
 	void copyTextCtrlToSlot(std::size_t index, const std::string& itemDescription, std::string& text) const;
 	void eraseTextCtrlContent(std::size_t index);

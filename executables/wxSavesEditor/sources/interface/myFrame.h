@@ -46,16 +46,20 @@ private:
 	void bindRacketSize(wxCommandEvent& event);
 	void bindRimSize(wxCommandEvent& event);
 	void bindCampaignHeaderMenu(wxCommandEvent& event);
+	void setCampaignHeader(GameSlotData& slot);
 	void bindScoreHeaderMenu(wxCommandEvent& event);
+	void setScoreHeader(GameSlotData& slot);
 	
 	void checkSlotDataCanBeSaved();
 	void setTextCtrlWithLoadedSlot(GameSlotData& slot);//After loading data from file on disk from 'file dialog'
-	void runAssignationsToSlot(GameSlotData& slot) const;//Run in 'checkTextCtrlValues()' function
+	void runAssignationsToSlot(GameSlotData& slot);//Run in 'checkTextCtrlValues()' function
 	void saveToFileDialog(wxCommandEvent& event);//Open a window to save current slot to file on disk
 	void loadFromFileDialog(wxCommandEvent& event);//Open a window from which a file can be selected to write slot data
 	void setCurrentValuesToSlot();
 	void logPrefPathStatus(const wxPrefPathFinder& prefPath);
 	void atStartLogging(const AppStartData& appStartData);
+	
+	void initializeHeadersThumbnail();
 };
 
 #endif //APP_MAIN_FRAME_H

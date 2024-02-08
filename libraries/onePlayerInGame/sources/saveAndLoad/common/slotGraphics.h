@@ -11,12 +11,12 @@ class TextsBlocks;
 
 struct SlotGraphics
 {
-	TextureCombo slotSquare;
+	sdl2::Sprite slotSquareSprite;
 	TextureCombo campaignAndDate;
 	TextureCombo scoreAndCoins;
 	ButtonFlat deleteGameSaveButton;
 	
-	explicit SlotGraphics(Essentials& essentials, std::size_t gameSaveNumber);
+	explicit SlotGraphics(Essentials& essentials, int row, int line, const sdl2::TextureLoader& squareTexture);//std::size_t gameSaveNumber);
 	~SlotGraphics() = default;
 	SlotGraphics( const SlotGraphics& ) = delete;
 	SlotGraphics& operator= ( const SlotGraphics& ) = delete;
@@ -31,5 +31,11 @@ struct SlotGraphics
 	void setErrorStringSecondString(Essentials& essentials, const sdl2::Font& arial, const std::string& error);
 	void setTextIfSlotFree(Essentials& essentials, const sdl2::Font& arial, const TextsBlocks& localeTexts);
 };
+
+namespace slots{
+	int getXPosition(int rowNumber);
+	
+	int getYPosition(int lineNumber);
+}
 
 #endif //GAME_SLOT_GRAPHICS_H

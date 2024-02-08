@@ -14,10 +14,13 @@
 #include "gameSlots/slotConsts.h"
 #include <cassert>
 
+constexpr SDL_Color SlotSquareColor = {215, 207, 174, 255};
+
 SlotsUserInterface::SlotsUserInterface(Essentials& essentials, unsigned contextFocus):
 	localeTexts{essentials.logs.error, path::getLanguageFile(essentials.language, file::OnePlayerSaveAndLoad), SaveNameFocusingGameMax},
 	arial{essentials.logs.error, ArialFontPath, FontSmallPointSize},
 	fancyFont{essentials.logs.error, FancyFontPath, FontMediumPointSize},
+	slotSquareTexture{essentials.logs, essentials.rndWnd, SlotSquareColor, SaveSlotSquareWidth, SaveSlotSquareHeight},
 	quitButton{essentials.logs, essentials.rndWnd, fancyFont, localeTexts[SaveNameQuitMenu], GreenColor, MediumGrayColor, GameScreenWidth - SQR_SIZE * 2, SQR_SIZE, true},
 	slotsData(SlotsNumber)
 {
@@ -77,9 +80,12 @@ bool SlotsUserInterface::isQuitButtonClicked() const
 
 void SlotsUserInterface::createSlotsGraphics(Essentials& essentials)
 {
-	for( unsigned slotIndex{0} ; slotIndex < SlotsNumber ; ++slotIndex )
+	for( int row{0} ; row < SaveSlotRowsNumber ; ++row )
 	{
-		slotsGraphics.emplace_back(SlotGraphics{essentials, slotIndex});
+		for( int line{0} ; line < SaveSlotLinesNumber ; ++line )
+		{
+			slotsGraphics.emplace_back( SlotGraphics{ essentials, row, line, slotSquareTexture } );
+		}
 	}
 }
 

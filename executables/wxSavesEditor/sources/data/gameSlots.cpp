@@ -4,6 +4,24 @@
 #include "consts/rimsConsts.h"
 #include <stdexcept>
 
+GameSaveSlots::GameSaveSlots()
+{
+	giveSlotCoherentValues();
+}
+
+void GameSaveSlots::giveSlotCoherentValues()
+{
+	slot.campaignType = onePlGame::CampaignWithShop;
+	slot.skillLevel = onePlGame::SkillLevelIntermediate;
+	slot.playerLives = 3;
+	slot.racketSpeed = onePlGame::RacketStartingSpeed;
+	slot.racketSize = onePlGame::MediumRacket;
+	slot.score = 0;
+	slot.bonusCoinNumber = 10;
+	slot.rimsStartState = rims::RimNullState;
+	slot.levelCursor = 0;
+}
+
 void GameSaveSlots::checkSlot() const
 {
 	checkSkillLevelValue();
