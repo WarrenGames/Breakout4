@@ -4,7 +4,7 @@ All the sources of this project (excepted for the SDL2 for which I am not the au
 in this project, has been written in C), have been written with the C++ language and needs at least a
 compiler that provide the 2017 C++ standard functionalities (like fileSystem header).
 
-The Breakout4 project has three dependencies:
+The Breakout4 project has four dependencies:
 - The SimpleDirectMediaLayer v2.x library (also called 'SDL2')
 - The WxWidgets framework
 - The CMake build tool.

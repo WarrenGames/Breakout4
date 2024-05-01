@@ -1,1 +1,4 @@
+2024-05-01 : new CMakeLists.txt file that makes the wxWidgets framework optional/not mandatory any longer (but with some restrictions, like 
+	not building wxSavesEditor or wxLevelEditor executables). The game executable don't need wxWidgets.
+
 2024-02-08 : many saves editor bug fixes.
