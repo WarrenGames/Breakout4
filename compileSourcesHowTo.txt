@@ -1,0 +1,72 @@
+Read 'README.md' for a description of the Breakout4 game.
+
+All the sources of this project have been written with the C++ language and needs at least a
+compiler that provide the 2017 C++ standard functionalities (like fileSystem header). 
+Excepted for the SDL2 for which I am not the author and not supplied in this project, which 
+has been written in C).
+
+The Breakout4 project has three dependencies:
+- The SimpleDirectMediaLayer v2.x library (also called 'SDL2')
+- The WxWidgets framework (optional, see main CMakeLists.txt for more details)
+- The CMake build tool.
+
+The source code is divided in several libraries (in the 'libraries' sub directory) and some executables 
+(in the 'executables' sub directory). For example the executable 'game' which sources files are in 
+'executables/game' uses 11 libraries implemented in theses sources. Each library and executable has a 
+'CMakeLists.txt' file (you can check in those file some details if you are familiar with the CMake script 
+language). Finally there is a main 'CMakeLists.txt' file to link all the sub projects between them.
+
+Implemented executables purposes:
+'game' : the Breakout4 game (a breakout clone).
+'wxLevelEditor' : a level editor for the game.
+'wxSavesEditor' : a game saves editor.
+
+How to download the dependencies (if you don't have repositories to get them directly, for example):
+The SDL2 can be downloaded from this web site: 'https://www.libsdl.org'
+The WxWidgets framework can be downloaded from this web site: 'https://www/wxwidgets.org'
+The CMake project configuration tool can be downloaded from this web site: 'https://www.cmake.org'
+
+Compile time project options:
+Most of the textures used in Breakout4 are generated with the raytracer POVRay. In this texture generator
+system, that you can download on 'https://www.ant01.fr/index.php/jeux-ant01/projet-breakout4' on the project page, 
+you must specify before the generation starts the size in pixels of the Square size in the game. Once done, you 
+get all the textures with a proportional size of the given pixel size. In the source code of the Breakout4 game, 
+the executable windows size is defined like this: width = 20 * 'SquareSize' and height 15 * 'SquareSize'; so if 
+you generated the textures with a square size of 64 you must configure the compilation with a square size value 
+of 64 too and you will play the game with a windows size of 1280 x 960 ( Width 20 * 64 and Height 15 * 64). To have a 
+concrete example of these proportional textures sizes check the screenshots on 
+'https://www.ant01.fr/index.php/jeux-ant01/projet-breakout4?view=article&id=54&catid=2'. There are pregenerated textures 
+pack on this web site too if you don't have time to make them on your computer or if you don't want to install POVRay on 
+your system.
+
+-----------------
+Compilation options:
+If you don't want to or don't have wxWidgets on your computer, in the main CMakeLists.txt, line 8 you can replace the following line:
+set( USE_WX_WIDGETS_FRAMEWORK ON BOOL )
+by
+set( USE_WX_WIDGETS_FRAMEWORK OFF BOOL )
+But you won't be able to compile wxSavesEditor and wxLevelEditor. This applies to all platforms.
+
+-----------------
+Run compilation configuration with CMake under Ubuntu in a terminal:
+Open a terminal in the top project directory and run cmake with this command:
+
+cmake -G"Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DSQUARE_SIZE=64 -DCMAKE_CXX_COMPILER=g++-11 -S. -B../build
+
+This will create Makefiles (because of the option -G"Unix Makefiles" ) a Release compilation type (not a Debug 
+one) a square size of 64 pixels ( -DSQUARE_SIZE=64 ) with the 'g++-11' compiler the compiled files will be in 
+'../build' directory. In Ubuntu you don't have to tell in the main CMakeLists.txt file the location of the 
+extern dependencies like SDL2 (with 'SDL2_DIR' value) and the wxWidgets framework (with wxWidgets_ROOT_DIR ; 
+wxWidgets_INCLUDE_DIRS ; wxWidgets_LIB_DIR values ).
+
+-----------------
+Run compilation configuration with CMake under Windows with Visual Studio:
+You must set the following string values in the main CMakeLists.txt so the project will use SDL2 and wxWidgets
+libraries:
+- SDL2_DIR "'path of the SDL2 library'" (for example: "C:/prog/library/SDL2-2.0.20/i686-w64-mingw32" for a 
+	32 bits compilation (note the 'i686-w64-mingw32' last dir for that purpose or: 
+	"C:/prog/library/SDL2-2.0.20/x86_64-w64-ming32" for a 64 bits compilation with 'x86_64-w64-mingw32' sub 
+	directory this time.
+- wxWidgets_ROOT_DIR for the top directory of the wxWidgets framework path.
+- wxWidgets_INCLUDE_DIRS for the include directory of the same library (the path of the headers).
+- wxWidgets_LIB_DIR for the library directory (where you can find the lib and dll files).
