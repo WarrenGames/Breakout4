@@ -29,7 +29,7 @@ set( WARREN_LIBS_STATIC_LIBS_PATH "${WARREN_LIBS_BUILDING_PATH}/${WARREN_STATIC_
 
 if(WIN32)
     set( SDL2_DIR "" )
-    if( USE_WX_WIDGETS_FRAMEWORK EQUAL ON )
+    if( USE_WX_WIDGETS_FRAMEWORK )
 		set( wxWidgets_ROOT_DIR "" )
 		set( wxWidgets_INCLUDE_DIRS "" )
 		set( wxWidgets_LIB_DIR "" )
@@ -41,14 +41,14 @@ find_package(SDL2_image REQUIRED)
 find_package(SDL2_ttf REQUIRED)
 find_package(SDL2_mixer REQUIRED)
 
-if( USE_WX_WIDGETS_FRAMEWORK EQUAL ON )
+link_directories( ${WARREN_LIBS_STATIC_LIBS_PATH} )
+
+if( USE_WX_WIDGETS_FRAMEWORK )
 	set( wxWidgets_CONFIGURATION mswu )
 	find_package( wxWidgets COMPONENTS core base REQUIRED )
 	add_subdirectory(executables/wxLevelEditor)
 	add_subdirectory(executables/wxSavesEditor)
 endif()
-
-link_directories( ${WARREN_LIBS_STATIC_LIBS_PATH} )
 
 add_subdirectory(executables/game)
 add_subdirectory(libraries/commonFiles)
@@ -74,7 +74,7 @@ else()
 	)
 endif(UNIX)
 
-if( USE_WX_WIDGETS_FRAMEWORK EQUAL ON )
+if( USE_WX_WIDGETS_FRAMEWORK )
 	if(UNIX)
 		include(GNUInstallDirs)
 		install( 
