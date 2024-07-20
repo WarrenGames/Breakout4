@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.13 )
 
-project( wxLevelEditor LANGUAGES CXX )
+project( breakout4_levelEditor LANGUAGES CXX )
 
 include( ${wxWidgets_USE_FILE} )
 

@@ -1,3 +1,7 @@
+2024-07-20 : The main CMakeLists.txt file has been modified, the line 8 doesn't contain the word 'BOOL' anymore, which led to a bug when
+	the 'USE_WX_WIDGETS_FRAMEWORK' value was set to OFF, cmake even searched the wxWidgets framework whereas the user of the 
+	libraries explicitly tell cmake to not search/use it in the configuration/compilation process.
+
 2024-05-01 : new CMakeLists.txt file that makes the wxWidgets framework optional/not mandatory any longer (but with some restrictions, like 
 	not building wxSavesEditor or wxLevelEditor executables). The game executable don't need wxWidgets.
 

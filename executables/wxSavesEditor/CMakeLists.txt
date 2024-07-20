@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.13 )
 
-project( wxSavesEditor LANGUAGES CXX )
+project( breakout4_savesEditor LANGUAGES CXX )
 
 include( ${wxWidgets_USE_FILE} )
 

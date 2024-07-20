@@ -23,7 +23,7 @@ set( CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${PROJECT_SOURCE_DIR}/cmakeModule
 
 if(WIN32)
     set( SDL2_DIR "" )
-    if( USE_WX_WIDGETS_FRAMEWORK EQUAL ON )
+    if( USE_WX_WIDGETS_FRAMEWORK )
 		set( wxWidgets_ROOT_DIR "" )
 		set( wxWidgets_INCLUDE_DIRS "" )
 		set( wxWidgets_LIB_DIR "" )
@@ -74,7 +74,7 @@ else()
 	)
 endif(UNIX)
 
-if( USE_WX_WIDGETS_FRAMEWORK EQUAL ON )
+if( USE_WX_WIDGETS_FRAMEWORK )
 	if(UNIX)
 		include(GNUInstallDirs)
 		install( 
