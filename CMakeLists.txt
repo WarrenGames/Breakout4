@@ -5,7 +5,7 @@ project( Breakout4 LANGUAGES CXX )
 #If you don't need wxWidgets framework set the boolean below to OFF ('ON' else).
 #The games like 'Bob the blob' or 'SDL2_WarrenTetris' don't need wxWidgets framework at all.
 #In 'Breakout4' game you can choose if you don't want to use wxWidgets, but you won't build wxSavesEditor and wxLevelEditor.
-set( USE_WX_WIDGETS_FRAMEWORK ON BOOL )
+set( USE_WX_WIDGETS_FRAMEWORK ON )
 
 if( DEFINED SQUARE_SIZE )
 	file( WRITE "libraries/commonFiles/sources/consts/squareSize.h" "constexpr int SQR_SIZE = ${SQUARE_SIZE};" )

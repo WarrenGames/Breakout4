@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.13 )
 
-project( game LANGUAGES CXX )
+project( breakout4_game LANGUAGES CXX )
 
 set( HEADERS
 	sources/contexts/options/graphics/graphicsMenuData.h
