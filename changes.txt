@@ -1,3 +1,6 @@
+2024-08-30 : The main CMakeLists.txt file has been modified. There was a bug with the executables names 'breakout4_game', 
+	'breakout4_levelEditor' and breakout4_savesEditor' which led to an error when invoking cmake.
+
 2024-07-20 : The main CMakeLists.txt file has been modified, the line 8 doesn't contain the word 'BOOL' anymore, which led to a bug when
 	the 'USE_WX_WIDGETS_FRAMEWORK' value was set to OFF, cmake even searched the wxWidgets framework whereas the user of the 
 	libraries explicitly tell cmake to not search/use it in the configuration/compilation process.

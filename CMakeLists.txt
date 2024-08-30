@@ -4,9 +4,8 @@ project( Breakout4 LANGUAGES CXX )
 
 #If you don't need wxWidgets framework set the boolean below to OFF ('ON' else).
 #The games like 'Bob the blob' or 'SDL2_WarrenTetris' don't need wxWidgets framework at all.
-#In 'Breakout4' game you can choose if you don't want to use wxWidgets, but you won't build wxSavesEditor and wxLevelEditor neither.
-
-set( USE_WX_WIDGETS_FRAMEWORK ON BOOL )
+#In 'Breakout4' game you can choose if you don't want to use wxWidgets, but you won't build wxSavesEditor and wxLevelEditor.
+set( USE_WX_WIDGETS_FRAMEWORK ON )
 
 if( DEFINED SQUARE_SIZE )
 	file( WRITE "libraries/commonFiles/sources/consts/squareSize.h" "constexpr int SQR_SIZE = ${SQUARE_SIZE};" )
@@ -19,7 +18,14 @@ endif()
 
 set( CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON )
 
-set( CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${PROJECT_SOURCE_DIR}/cmakeModules")
+set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmakeModules)
+
+#set this path to the built WarrenGamesCustomLibs libraries directory (needed below at line 51) (use a canonical path, not a relative one)
+set( WARREN_LIBS_BUILDING_PATH "/media/antoine/projetsLinux/projects/warrenLibs/cmake/builtCustomLibs" )
+
+set( WARREN_STATIC_LIBS_DIR "builtArchives" )
+set( WARREN_LIBS_INCLUDES_PATH "${WARREN_LIBS_BUILDING_PATH}/includes" )
+set( WARREN_LIBS_STATIC_LIBS_PATH "${WARREN_LIBS_BUILDING_PATH}/${WARREN_STATIC_LIBS_DIR}" )
 
 if(WIN32)
     set( SDL2_DIR "" )
@@ -41,8 +47,6 @@ if( USE_WX_WIDGETS_FRAMEWORK )
 	add_subdirectory(executables/wxLevelEditor)
 	add_subdirectory(executables/wxSavesEditor)
 	add_subdirectory(libraries/wxPrefPath)
-else()
-	message("The wxWidgets framework won't be used for the compilation\n")
 endif()
 
 add_subdirectory(executables/game)
@@ -63,13 +67,13 @@ if(UNIX)
 	include(GNUInstallDirs)
 	install( 
 		TARGETS 
-			game 
+			breakout4_game 
 		RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT Runtime
 	)
 else()
 	install( 
 		TARGETS 
-			game 
+			breakout4_game 
 		RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX} COMPONENT Runtime
 	)
 endif(UNIX)
@@ -79,15 +83,15 @@ if( USE_WX_WIDGETS_FRAMEWORK )
 		include(GNUInstallDirs)
 		install( 
 			TARGETS
-				wxLevelEditor 
-				wxSavesEditor 
+				breakout4_levelEditor 
+				breakout4_savesEditor 
 			RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT Runtime
 		)
 	else()
 		install( 
 			TARGETS
-				wxLevelEditor 
-				wxSavesEditor 
+				breakout4_levelEditor 
+				breakout4_savesEditor 
 			RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX} COMPONENT Runtime
 		)
 	endif(UNIX)
