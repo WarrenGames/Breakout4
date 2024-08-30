@@ -21,7 +21,7 @@ set( CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON )
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmakeModules)
 
 #set this path to the built WarrenGamesCustomLibs libraries directory (needed below at line 51) (use a canonical path, not a relative one)
-set( WARREN_LIBS_BUILDING_PATH "/media/antoine/projetsLinux/temp/CmakeAndWxWidgetsOption/builtWarrenCustomLibs" )
+set( WARREN_LIBS_BUILDING_PATH "/media/antoine/projetsLinux/projects/warrenLibs/cmake/builtCustomLibs" )
 
 set( WARREN_STATIC_LIBS_DIR "builtArchives" )
 set( WARREN_LIBS_INCLUDES_PATH "${WARREN_LIBS_BUILDING_PATH}/includes" )
@@ -63,13 +63,13 @@ if(UNIX)
 	include(GNUInstallDirs)
 	install( 
 		TARGETS 
-			game 
+			breakout4_game 
 		RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT Runtime
 	)
 else()
 	install( 
 		TARGETS 
-			game 
+			breakout4_game 
 		RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX} COMPONENT Runtime
 	)
 endif(UNIX)
@@ -79,15 +79,15 @@ if( USE_WX_WIDGETS_FRAMEWORK )
 		include(GNUInstallDirs)
 		install( 
 			TARGETS
-				wxLevelEditor 
-				wxSavesEditor 
+				breakout4_levelEditor 
+				breakout4_savesEditor 
 			RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT Runtime
 		)
 	else()
 		install( 
 			TARGETS
-				wxLevelEditor 
-				wxSavesEditor 
+				breakout4_levelEditor 
+				breakout4_savesEditor 
 			RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX} COMPONENT Runtime
 		)
 	endif(UNIX)
