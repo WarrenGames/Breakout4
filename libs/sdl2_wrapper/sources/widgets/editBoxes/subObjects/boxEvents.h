@@ -10,7 +10,7 @@ enum{BoxEvent_0, BoxEvent_1, BoxEvent_2, BoxEvent_3, BoxEvent_4, BoxEvent_5, Box
 
 enum{BoxEventEscape, BoxEventBackspace, BoxEventReturn, BoxEventMinus, BoxEventSpacebar, BoxEventDot, BoxEventKeyMax };
 
-constexpr std::size_t AlphaCaseNum = 'z' - 'a';
+constexpr std::size_t AlphaCaseNum = 'z' - 'a' + 1;
 
 struct SDL_Rect;
 
