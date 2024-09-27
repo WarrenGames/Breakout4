@@ -15,13 +15,14 @@
 #include <cassert>
 
 constexpr SDL_Color SlotSquareColor = {215, 207, 174, 255};
+constexpr SDL_Color TitleColor = { 223, 223, 0, 255 };
 
 SlotsUserInterface::SlotsUserInterface(Essentials& essentials, unsigned contextFocus):
 	localeTexts{essentials.logs.error, path::getLanguageFile(essentials.language, file::OnePlayerSaveAndLoad), SaveNameFocusingGameMax},
 	arial{essentials.logs.error, ArialFontPath, FontSmallPointSize},
 	fancyFont{essentials.logs.error, FancyFontPath, FontMediumPointSize},
 	slotSquareTexture{essentials.logs, essentials.rndWnd, SlotSquareColor, SaveSlotSquareWidth, SaveSlotSquareHeight},
-	quitButton{essentials.logs, essentials.rndWnd, fancyFont, localeTexts[SaveNameQuitMenu], GreenColor, MediumGrayColor, GameScreenWidth - SQR_SIZE * 2, SQR_SIZE, true},
+	quitButton{essentials.logs, essentials.rndWnd, fancyFont, localeTexts[SaveNameQuitMenu], GreenColor, WhiteColor, GameScreenWidth - SQR_SIZE * 2, SQR_SIZE, true},
 	slotsData(SlotsNumber)
 {
 	createSlotsGraphics(essentials);
@@ -94,12 +95,12 @@ void SlotsUserInterface::createTitle(Essentials& essentials, unsigned contextFoc
 	assert( SaveNameFocusingOnSaving == contextFocus || SaveNameFocusingOnLoading == contextFocus );
 	if( SaveNameFocusingOnSaving == contextFocus )
 	{
-		title.texture.loadBlendedText(essentials.logs, essentials.rndWnd, fancyFont, localeTexts[SaveNameFocusingOnSaving], WhiteColor);
+		title.texture.loadBlendedText(essentials.logs, essentials.rndWnd, fancyFont, localeTexts[SaveNameFocusingOnSaving], TitleColor);
 		title.resetSpritePosition(TexturePosition{ GameScreenWidth / 2, SQR_SIZE, true, true } );
 	}
 	else if( SaveNameFocusingOnLoading == contextFocus )
 	{
-		title.texture.loadBlendedText(essentials.logs, essentials.rndWnd, fancyFont, localeTexts[SaveNameFocusingOnLoading], WhiteColor); 
+		title.texture.loadBlendedText(essentials.logs, essentials.rndWnd, fancyFont, localeTexts[SaveNameFocusingOnLoading], TitleColor); 
 		title.resetSpritePosition(TexturePosition{GameScreenWidth / 2, SQR_SIZE, true, true} );
 	}
 }
