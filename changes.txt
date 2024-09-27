@@ -1,3 +1,6 @@
+2024-09-27 : - Bug fix: the first level of the shop campaign was not the good one.
+	-The interface is more user friendly, with some more wallpapers instead of black screens.
+
 2024-09-04 : - A bug in the 'boxEvents.h' and 'boxEvents.cpp' has been fixed (the size of alpha characters was set with "'z' - 'a'" 
 	which sets the size to 25 whereas the good value must be 26 ).
 

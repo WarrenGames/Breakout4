@@ -114,7 +114,6 @@ void onePlGame::newGame::drawEverything(Essentials& essentials, onePlGame::newGa
 	{
 		if( essentials.drawFreq.canDrawGame() )
 		{
-			essentials.rndWnd.clearScreen(BlackColor);
 			interface.drawEverything(essentials);
 			essentials.rndWnd.displayRenderer();
 		}

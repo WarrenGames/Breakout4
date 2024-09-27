@@ -19,12 +19,13 @@ optionsMenu::GraphicsData::GraphicsData(Essentials& essentials):
 	displaySdl2Logo{true},
 	displayLogoEditBox{essentials.logs, essentials.rndWnd, SDL_Rect{ GameScreenWidth / 2 + SQR_SIZE * 2, GameScreenHeight / 2 - SQR_SIZE * 4 - BoxHeight / 2, BoxWidth, BoxHeight},
 							FontMediumPointSize, displaySdl2Logo},
-	panelTitle{ essentials.logs, essentials.rndWnd, fancyFont, languagesTexts[optionsMenu::TextGraphicTitle], WhiteColor, TexturePosition{GameScreenWidth / 2, SQR_SIZE, true, true} },
-	displayLogoInfoText{essentials.logs, essentials.rndWnd, fancyFont, languagesTexts[optionsMenu::TextGraphicLogoDisplay], WhiteColor, 
+	panelTitle{ essentials.logs, essentials.rndWnd, fancyFont, languagesTexts[optionsMenu::TextGraphicTitle], BlackColor, TexturePosition{GameScreenWidth / 2, SQR_SIZE, true, true} },
+	displayLogoInfoText{essentials.logs, essentials.rndWnd, fancyFont, languagesTexts[optionsMenu::TextGraphicLogoDisplay], BlackColor, 
 							TexturePosition{SQR_SIZE, GameScreenHeight / 2 - SQR_SIZE * 4, false, true} },
-	boxName{ essentials.logs, essentials.rndWnd, fancyFont, languagesTexts[optionsMenu::TextGraphicBoxName], WhiteColor, TexturePosition{SQR_SIZE, GameScreenHeight / 2, false , true} },
-	hintOnFrame{ essentials.logs, essentials.rndWnd, fancyFont, languagesTexts[optionsMenu::TextGraphicHint], WhiteColor, TexturePosition{SQR_SIZE, GameScreenHeight - SQR_SIZE * 4, false, true} },
-	quitButton{essentials.logs, essentials.rndWnd, fancyFont, languagesTexts[optionsMenu::TextGraphicQuit], GreenColor, MediumGrayColor, GameScreenWidth - SQR_SIZE * 3, SQR_SIZE / 2, true }
+	boxName{ essentials.logs, essentials.rndWnd, fancyFont, languagesTexts[optionsMenu::TextGraphicBoxName], BlackColor, TexturePosition{SQR_SIZE, GameScreenHeight / 2, false , true} },
+	hintOnFrame{ essentials.logs, essentials.rndWnd, fancyFont, languagesTexts[optionsMenu::TextGraphicHint], BlackColor, TexturePosition{SQR_SIZE, GameScreenHeight - SQR_SIZE * 4, false, true} },
+	screenBackground{ essentials.logs, essentials.rndWnd, "textures/gameGUI/optionsVignettes/graphismsBackground.png" },
+	quitButton{ essentials.logs, essentials.rndWnd, fancyFont, languagesTexts[optionsMenu::TextGraphicQuit], GreenColor, MediumGrayColor, GameScreenWidth - SQR_SIZE * 3, SQR_SIZE / 2, true }
 {
 	readSdl2LogoDisplayingFile(essentials);
 }
@@ -38,6 +39,7 @@ void optionsMenu::GraphicsData::updateBox(Essentials& essentials)
 
 void optionsMenu::GraphicsData::drawEverything(Essentials& essentials) const
 {
+	screenBackground.draw(essentials.rndWnd);
 	frameEditBox.drawBoxWithoutFocus(essentials.rndWnd);
 	displayLogoInfoText.draw(essentials.rndWnd);
 	displayLogoEditBox.drawBox(essentials.rndWnd);

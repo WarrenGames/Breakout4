@@ -11,10 +11,11 @@ void loadGame::mainContext(Essentials& essentials, PlayerData& playerData)
 {
 	bool quitLoadGameMenu{false};
 	SlotsUserInterface slotsGui{essentials, SaveNameFocusingOnLoading};
-	loadGame::mainLoop(essentials, playerData, slotsGui, quitLoadGameMenu);
+	const TextureCombo screenBackground{ essentials.logs, essentials.rndWnd, "textures/wallpapers/campaignChoice.png" };
+	loadGame::mainLoop(essentials, playerData, slotsGui, screenBackground, quitLoadGameMenu);
 }
 
-void loadGame::mainLoop(Essentials& essentials, PlayerData& playerData, SlotsUserInterface& slotsGui, bool& quitLoadGameMenu)
+void loadGame::mainLoop(Essentials& essentials, PlayerData& playerData, SlotsUserInterface& slotsGui, const TextureCombo& screenBackground, bool& quitLoadGameMenu)
 {
 	while( false == quitLoadGameMenu )
 	{
@@ -22,7 +23,7 @@ void loadGame::mainLoop(Essentials& essentials, PlayerData& playerData, SlotsUse
 		slotsGui.update(essentials);
 		loadGame::quitContext(essentials, slotsGui, quitLoadGameMenu);
 		loadGame::loadASlot(essentials, playerData, slotsGui, quitLoadGameMenu);
-		loadGame::drawEverything(essentials, slotsGui, quitLoadGameMenu);
+		loadGame::drawEverything(essentials, slotsGui, screenBackground, quitLoadGameMenu);
 	}
 }
 
@@ -36,11 +37,11 @@ void loadGame::loadASlot(Essentials& essentials, PlayerData& playerData, const S
 	}
 }
 
-void loadGame::drawEverything(Essentials& essentials, const SlotsUserInterface& slotsGui, bool& quitLoadGameMenu)
+void loadGame::drawEverything(Essentials& essentials, const SlotsUserInterface& slotsGui, const TextureCombo& screenBackground, bool& quitLoadGameMenu)
 {
 	if( false == quitLoadGameMenu )
 	{
-		essentials.rndWnd.clearScreen(BlackColor);
+		screenBackground.draw(essentials.rndWnd);
 		slotsGui.drawInterface(essentials);
 		essentials.rndWnd.displayRenderer();
 		SDL_Delay(SdlDelayTime);

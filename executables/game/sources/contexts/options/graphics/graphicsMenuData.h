@@ -22,6 +22,7 @@ private:
 	const TextureCombo displayLogoInfoText;
 	const TextureCombo boxName;
 	const TextureCombo hintOnFrame;
+	const TextureCombo screenBackground;
 	TextButton quitButton;
 	
 public:

@@ -9,6 +9,8 @@
 #include "consts/sdlColors.h"
 #include "consts/constPaths.h"
 
+constexpr SDL_Color LevelsNumberColor = { 223, 223, 0, 255 };
+
 CampaignChoiceGui::CampaignChoiceGui(Essentials& essentials):
 	languageTexts{essentials.logs.error, path::getLanguageFile(essentials.language, file::OnePlayerCampaignChoice), campaignChoice::TextMax},
 	fancyFont{essentials.logs.error, FancyFontPath, FontBigPointSize},
@@ -16,24 +18,26 @@ CampaignChoiceGui::CampaignChoiceGui(Essentials& essentials):
 	stdRaceLevelCount{essentials, path::getRaceLevelList(onePlGame::CampaignNoShop) },
 	screenTitle{essentials.logs, essentials.rndWnd, fancyFont, languageTexts[campaignChoice::TitleText], WhiteColor, 
 						TexturePosition{GameScreenWidth / 2, SQR_SIZE, true, true} },
-	shopRaceSelection{essentials.logs, essentials.rndWnd, fancyFont, languageTexts[campaignChoice::WithShopText], GreenColor, MediumGrayColor, 
+	backgroundImage{essentials.logs, essentials.rndWnd, "textures/wallpapers/campaignChoice.png" },
+	shopRaceSelection{essentials.logs, essentials.rndWnd, fancyFont, languageTexts[campaignChoice::WithShopText], GreenColor, WhiteColor, 
 						TexturePosition{GameScreenWidth / 4, GameScreenHeight * 3 / 4, true, true} },
-	noShopRaceSelection{essentials.logs, essentials.rndWnd, fancyFont, languageTexts[campaignChoice::StandardCampaignText], GreenColor, MediumGrayColor, 
+	noShopRaceSelection{essentials.logs, essentials.rndWnd, fancyFont, languageTexts[campaignChoice::StandardCampaignText], GreenColor, WhiteColor, 
 						TexturePosition{GameScreenWidth * 3 / 4, GameScreenHeight * 3 / 4, true, true} },
 	shopRaceBackground{essentials.logs, essentials.rndWnd, "textures/wallpapers/shopMiniScreen.png", 
 						TexturePosition{GameScreenWidth / 4, 6 * SQR_SIZE, true, true} },
 	noShopRaceBackground{essentials.logs, essentials.rndWnd, "textures/wallpapers/simpleRaceMiniScreen.png", 
 						TexturePosition{GameScreenWidth * 3 / 4, 6 * SQR_SIZE, true, true} },
-	shopRaceLvlNumber{essentials.logs, essentials.rndWnd, fancyFont, std::to_string(shopRaceLevelCount.getLevelsNumber() ) + languageTexts[campaignChoice::LevelText], WhiteColor, 
-						TexturePosition{GameScreenWidth / 4, GameScreenHeight - SQR_SIZE * 2, true, true} },
-	stdRaceLvlNumber{essentials.logs, essentials.rndWnd, fancyFont, std::to_string(stdRaceLevelCount.getLevelsNumber() ) + languageTexts[campaignChoice::LevelText], WhiteColor, 
-						TexturePosition{GameScreenWidth * 3 / 4, GameScreenHeight - SQR_SIZE * 2, true, true} }
+	shopRaceLvlNumber{essentials.logs, essentials.rndWnd, fancyFont, std::to_string(shopRaceLevelCount.getLevelsNumber() ) + languageTexts[campaignChoice::LevelText], 
+						LevelsNumberColor, TexturePosition{GameScreenWidth / 4, GameScreenHeight - SQR_SIZE * 2, true, true} },
+	stdRaceLvlNumber{essentials.logs, essentials.rndWnd, fancyFont, std::to_string(stdRaceLevelCount.getLevelsNumber() ) + languageTexts[campaignChoice::LevelText], 
+						LevelsNumberColor, TexturePosition{GameScreenWidth * 3 / 4, GameScreenHeight - SQR_SIZE * 2, true, true} }
 {
 
 }
 
 void CampaignChoiceGui::drawInterface(Essentials& essentials) const
 {
+	backgroundImage.draw(essentials.rndWnd);
 	screenTitle.draw(essentials.rndWnd);
 	shopRaceSelection.drawButton(essentials.rndWnd);
 	noShopRaceSelection.drawButton(essentials.rndWnd);

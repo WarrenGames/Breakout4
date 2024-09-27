@@ -10,6 +10,7 @@ onePlGame::newGame::Interface::Interface(Essentials& essentials):
 	fancyFont{essentials.logs.error, FancyFontPath, FontBigPointSize},
 	languageTexts{essentials.logs.error, path::getLanguageFile(essentials.language, file::OnePlayerNewGame), onePlGame::newGame::TextSkillMax},
 	screenTitle{essentials.logs, essentials.rndWnd, fancyFont, languageTexts[onePlGame::newGame::TextTitle], WhiteColor, TexturePosition{GameScreenWidth/2, SQR_SIZE, true, true} },
+	screenBackground{essentials.logs, essentials.rndWnd, "textures/wallpapers/onePlayerMainMenu.png", TexturePosition{ 0, 0, false, false } },
 	newGameButton{essentials.logs, essentials.rndWnd, fancyFont, languageTexts[onePlGame::newGame::TextStartNewGame], GreenColor, WhiteColor, GameScreenWidth / 2, SQR_SIZE * 4, true},
 	loadASavedGame{essentials.logs, essentials.rndWnd, fancyFont, languageTexts[onePlGame::newGame::TextLoadSavedGame], GreenColor, WhiteColor, GameScreenWidth / 2, SQR_SIZE * 6, true},
 	seeDoneScores{essentials.logs, essentials.rndWnd, fancyFont, languageTexts[onePlGame::newGame::TextSeeDoneScores], GreenColor, WhiteColor, GameScreenWidth / 2, SQR_SIZE * 8, true},
@@ -20,7 +21,7 @@ onePlGame::newGame::Interface::Interface(Essentials& essentials):
 	bricksSprites{bricksAnimation},
 	animIndexes{ 0, 0, 0 }
 {
-	
+	setIndexesAtInitialization();
 }
 
 void onePlGame::newGame::Interface::update(const Essentials& essentials)
@@ -36,6 +37,7 @@ void onePlGame::newGame::Interface::update(const Essentials& essentials)
 
 void onePlGame::newGame::Interface::drawEverything(Essentials& essentials)
 {
+	screenBackground.draw(essentials.rndWnd);
 	screenTitle.draw(essentials.rndWnd);
 	newGameButton.drawButton(essentials.rndWnd);
 	loadASavedGame.drawButton(essentials.rndWnd);
@@ -52,6 +54,7 @@ void onePlGame::newGame::Interface::updateAnimation()
 {
 	if( animDelay.hasTimeElapsed( std::chrono::milliseconds{60} ) )
 	{
+		animDelay.joinTimePoints();
 		for( auto &index : animIndexes )
 		{
 			if( index + 1 < bricksAnimation.size() )
@@ -62,6 +65,15 @@ void onePlGame::newGame::Interface::updateAnimation()
 				index = 0;
 			}
 		}
-		animDelay.joinTimePoints();
+	}
+}
+
+void onePlGame::newGame::Interface::setIndexesAtInitialization()
+{
+	if( bricksAnimation.wasLoadingPerfect() )
+	{
+		animIndexes[0] = 0;
+		animIndexes[1] = static_cast<int>( bricksAnimation.size() ) / 3;
+		animIndexes[2] = static_cast<int>( bricksAnimation.size() ) * 2 / 3;
 	}
 }
