@@ -42,6 +42,9 @@ namespace iceBricks{ enum{ IceCube, PinguinBrickTexturePath, Max }; }
 
 namespace hellBricks{ enum{ SkullBrick, LavaStone1, LavaStone2, LavaStone3, Max }; }
 
+constexpr char GridEditorTexturesEnumFilePath[] = "data/textures/texturesPacksConfigurations/editorPackList.txt";
+constexpr char TexturesPacksFilesDirectory[] = "data/textures/";
+
 }
 
 #endif //ONE_PLAYER_GRID_CONSTS_H
