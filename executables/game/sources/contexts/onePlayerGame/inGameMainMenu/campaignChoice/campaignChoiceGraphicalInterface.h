@@ -17,6 +17,7 @@ struct CampaignChoiceGui
 	const RaceLevelsCount shopRaceLevelCount;
 	const RaceLevelsCount stdRaceLevelCount;
 	const TextureCombo screenTitle;
+	const TextureCombo backgroundImage;
 	TextButton shopRaceSelection;
 	TextButton noShopRaceSelection;
 	const TextureCombo shopRaceBackground;

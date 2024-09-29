@@ -8,18 +8,24 @@
 #include <algorithm>
 #include <cassert>
 
+constexpr SDL_Color TitleColor = { 223, 223, 0, 255 };
+
 optionsMenu::MainMenu::MainMenu(Essentials& essentials):
 	languagesTexts{essentials.logs.error, path::getLanguageFile(essentials.language, file::OptionMenuMainPanel), optionsMenu::TextMenusMax},
 	fancyFont{essentials.logs.error, FancyFontPath, FontBigPointSize},
-	title{essentials.logs, essentials.rndWnd, fancyFont, languagesTexts[optionsMenu::TextMainMenuTitle], WhiteColor, TexturePosition{GameScreenWidth / 2, SQR_SIZE * 2, true, true} },
+	title{essentials.logs, essentials.rndWnd, fancyFont, languagesTexts[optionsMenu::TextMainMenuTitle], TitleColor, TexturePosition{GameScreenWidth / 2, SQR_SIZE * 2, true, true} },
+	graphismsVignette{essentials.logs, essentials.rndWnd, "textures/gameGUI/optionsVignettes/graphismsVignette.png", TexturePosition{GameScreenWidth * 3 / 4, SQR_SIZE * 6, true, true } },
 	soundImage{essentials.logs, essentials.rndWnd, "textures/gameGUI/optionsVignettes/audioVignette.png", TexturePosition{GameScreenWidth / 4, SQR_SIZE * 12, true, true } },
-	musicImage{essentials.logs, essentials.rndWnd, "textures/gameGUI/optionsVignettes/musicVignette.png", TexturePosition{GameScreenWidth * 3 / 4, SQR_SIZE * 12, true, true } }
+	musicImage{essentials.logs, essentials.rndWnd, "textures/gameGUI/optionsVignettes/musicVignette.png", TexturePosition{GameScreenWidth * 3 / 4, SQR_SIZE * 12, true, true } },
+	screenBackground{essentials.logs, essentials.rndWnd, "textures/wallpapers/campaignChoice.png", TexturePosition{ 0, 0, false, false } }
 {
 	populateTextButtons(essentials);
 }
 
 void optionsMenu::MainMenu::drawEverything(Essentials& essentials) const
 {
+	screenBackground.draw(essentials.rndWnd);
+	graphismsVignette.draw(essentials.rndWnd);
 	soundImage.draw(essentials.rndWnd);
 	musicImage.draw(essentials.rndWnd);
 	title.draw(essentials.rndWnd);
@@ -55,5 +61,5 @@ void optionsMenu::MainMenu::populateTextButtons(Essentials& essentials)
 	categoriesTexts.emplace_back( TextButton{essentials.logs, essentials.rndWnd, fancyFont, languagesTexts[optionsMenu::TextMusicMenu], 
 												GreenColor, WhiteColor, GameScreenWidth * 3 / 4, SQR_SIZE * 12, true} );
 	categoriesTexts.emplace_back( TextButton{essentials.logs, essentials.rndWnd, fancyFont, languagesTexts[optionsMenu::TextQuitMenu], 
-												GreenColor, MediumGrayColor, GameScreenWidth - SQR_SIZE * 3, SQR_SIZE / 2, true } );
+												GreenColor, WhiteColor, GameScreenWidth - SQR_SIZE * 3, SQR_SIZE / 2, true } );
 }

@@ -33,7 +33,6 @@ void optionsMenu::graphics::update(Essentials& essentials, optionsMenu::Graphics
 
 void optionsMenu::graphics::drawEverything(Essentials& essentials, optionsMenu::GraphicsData& graphicsData)
 {
-	essentials.rndWnd.clearScreen(BlackColor);
 	graphicsData.drawEverything(essentials);
 	essentials.rndWnd.displayRenderer();
 	SDL_Delay(SdlDelayTime);

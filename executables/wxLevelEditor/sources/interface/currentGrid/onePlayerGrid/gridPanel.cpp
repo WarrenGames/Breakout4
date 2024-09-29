@@ -103,9 +103,8 @@ void OnePlayerGridPanel::appendAccordingToSelected(const Offset& squareCoords)
 {
 	if( bricks::index::RichBrick == selectedBrick.index && squareCoords.x + 1 < EditorGridSquaresWidth )
 	{
-		BrickData richAdd{ selectedBrick.index, selectedBrick.property + 1 };
 		changeSquare(squareCoords.x, squareCoords.y, selectedBrick);
-		changeSquare(squareCoords.x + 1, squareCoords.y, richAdd);
+		changeSquare(squareCoords.x + 1, squareCoords.y, BrickData{ selectedBrick.index, selectedBrick.property + 1 } );
 	}
 	else{
 		changeSquare(squareCoords.x, squareCoords.y, selectedBrick);

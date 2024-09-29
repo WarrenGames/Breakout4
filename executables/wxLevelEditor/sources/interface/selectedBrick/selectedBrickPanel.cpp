@@ -9,8 +9,7 @@ SelectedBrickPanel::SelectedBrickPanel(MainFrame *mainFrame, OnePBricksTextures&
 	wxPanel{ mainFrame, wxID_ANY, wxPoint{-1, -1}, wxSize{BrickElementsWidth, BrickElementsHeight} },
 	selectedBrick{ bricks::index::GenericBrick, bricks::GenericBrick::Blue },
 	position{ BrickElementsWidth / 2 - SQR_SIZE / 2, BrickElementsHeight / 2 - SQR_SIZE / 2 },
-	tex{bricksTextures},
-	propertiesMax{ 0, bricks::GenericBrick::Max, bricks::RichBrick::Max, 1, bricks::bonuses::Max, TenPointsBrickStateNumber, HardBricksNumber, bricks::iceBricks::Max, bricks::hellBricks::Max }
+	tex{bricksTextures}
 {
 	Connect(wxEVT_PAINT, wxPaintEventHandler(SelectedBrickPanel::drawSelectedBrick ) );
 }
@@ -43,7 +42,7 @@ void SelectedBrickPanel::previousCategory()
 
 void SelectedBrickPanel::nextCategory()
 {
-	if( selectedBrick.index + 1 < bricks::index::Max )
+	if( selectedBrick.index + 2 < tex.getSize() )
 	{
 		selectedBrick.index++;
 		selectedBrick.property = 0;
@@ -64,7 +63,8 @@ void SelectedBrickPanel::previousSubCategory()
 void SelectedBrickPanel::nextSubCategory()
 {
 	assert( selectedBrick.index < bricks::index::Max );
-	if( selectedBrick.property + 1 < propertiesMax[selectedBrick.index] )
+	//if( selectedBrick.property + 1 < propertiesMax[selectedBrick.index] )
+	if( selectedBrick.property + 1 < tex.getCategorySize(selectedBrick.index) )
 	{
 		selectedBrick.property++;
 		Refresh();

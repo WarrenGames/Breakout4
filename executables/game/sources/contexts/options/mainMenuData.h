@@ -18,8 +18,10 @@ private:
 	const TextsBlocks languagesTexts;
 	const sdl2::Font fancyFont;
 	const TextureCombo title;
+	const TextureCombo graphismsVignette;
 	const TextureCombo soundImage;
 	const TextureCombo musicImage;
+	const TextureCombo screenBackground;
 	std::vector< TextButton > categoriesTexts;
 
 public:

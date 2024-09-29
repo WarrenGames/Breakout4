@@ -15,7 +15,6 @@ private:
 	BrickData selectedBrick;
 	Offset position;
 	OnePBricksTextures& tex;
-	std::vector< unsigned > propertiesMax;
 	
 public:
 	explicit SelectedBrickPanel(MainFrame *mainFrame, OnePBricksTextures& bricksTextures);

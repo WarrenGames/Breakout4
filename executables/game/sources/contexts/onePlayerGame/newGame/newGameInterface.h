@@ -22,6 +22,7 @@ namespace onePlGame{
 			const sdl2::Font fancyFont;
 			const TextsBlocks languageTexts;
 			const TextureCombo screenTitle;
+			const TextureCombo screenBackground;
 			TextButton newGameButton;
 			TextButton loadASavedGame;
 			TextButton seeDoneScores;
@@ -43,6 +44,7 @@ namespace onePlGame{
 			void update(const Essentials& essentials);
 			void drawEverything(Essentials& essentials);
 			void updateAnimation();
+			void setIndexesAtInitialization();
 		};
 	}
 }

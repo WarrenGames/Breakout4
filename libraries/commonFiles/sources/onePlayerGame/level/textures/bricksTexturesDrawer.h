@@ -23,20 +23,6 @@ public:
 
 	void linkSpritesToLoadedTextures(const BricksTexturesLoader& texturesLoader);
 	void drawSingleBrick(sdl2::RendererWindow& rndWnd, const BrickData& brickData, const Offset& position);
-
-private:
-	/*
-	void drawGeneric(sdl2::RendererWindow& rndWnd, unsigned brickInfo, const Offset& position);
-	void drawRich(sdl2::RendererWindow& rndWnd, unsigned brickInfo, const Offset& position);
-	void drawBonusCoinBrick(sdl2::RendererWindow& rndWnd, const Offset& position);
-	void drawGiftBrick(sdl2::RendererWindow& rndWnd, unsigned brickInfo, const Offset& position);
-	void drawTenPtsBricks(sdl2::RendererWindow& rndWnd, unsigned brickInfo, const Offset& position);
-	void drawSolidBrick(sdl2::RendererWindow& rndWnd, unsigned brickInfo, const Offset& position);
-	void drawIceBricks(sdl2::RendererWindow& rndWnd, unsigned brickInfo, const Offset& position);
-	void drawIceCube(sdl2::RendererWindow& rndWnd, const Offset& position);
-	void drawHellBricks(sdl2::RendererWindow& rndWnd, unsigned brickInfo, const Offset& position);
-	void drawLavaBrick(sdl2::RendererWindow& rndWnd, unsigned lavaBrickIndex, const Offset& position);
-	 */
 };
 
 #endif //ONE_PLAYER_BRICKS_TEXTURES_H
