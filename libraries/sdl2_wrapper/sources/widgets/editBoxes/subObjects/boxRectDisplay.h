@@ -13,7 +13,7 @@ class BoxRectDisplaying
 private:
 	sdl2::TexturePtr activeWindow;
 	sdl2::TexturePtr offWindow;	
-	const SDL_Rect mainRect;
+	SDL_Rect mainRect;
 
 public:
 	explicit BoxRectDisplaying(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const SDL_Rect& boxSize);

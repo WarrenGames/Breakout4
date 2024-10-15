@@ -2,7 +2,7 @@
 #include "widgets/editBoxes/subObjects/boxEvents.h"
 #include "logging/logsStruct.h"
 
-BoolEditBox::BoolEditBox(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const SDL_Rect& boxSize, unsigned int fontSize):
+BoolEditBox::BoolEditBox(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const SDL_Rect& boxSize, int fontSize):
 	boxRect{logs, rndWnd, boxSize},
 	boxContent{logs, rndWnd, fontSize, boxSize},
 	boolValue{nullptr}
@@ -11,7 +11,7 @@ BoolEditBox::BoolEditBox(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const 
 }
 	
 
-BoolEditBox::BoolEditBox(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const SDL_Rect& boxSize, unsigned int fontSize, bool& boolRef):
+BoolEditBox::BoolEditBox(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const SDL_Rect& boxSize, int fontSize, bool& boolRef):
 	boxRect{logs, rndWnd, boxSize},
 	boxContent{logs, rndWnd, fontSize, boxSize},
 	boolValue{&boolRef}

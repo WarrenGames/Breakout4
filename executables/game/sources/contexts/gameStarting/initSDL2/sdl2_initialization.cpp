@@ -5,6 +5,7 @@
 #include "initialization/sdl2MixerInit.h"
 #include "contexts/gameStarting/setupFiles/setupConfigFiles.h"
 #include "SDL.h"
+#include <cassert>
 
 void loadSDL2_modules(AppLogFiles& logs, const PrefPathFinder& prefPath)
 {

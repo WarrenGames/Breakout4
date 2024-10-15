@@ -16,10 +16,10 @@ class SoundConfig
 private:
 	bool isLoadingPerfect;
 	bool isSoundActive;
-	const sdl2::Mix_ChunkPtr soundExample;
-	const TextureCombo soundsTxt;
-	const TextureCombo enabled;
-	const TextureCombo disabled;
+	sdl2::Mix_ChunkPtr soundExample;
+	TextureCombo soundsTxt;
+	TextureCombo enabled;
+	TextureCombo disabled;
 	VolumeBar volBar;
 	TextButton playSound;
 	TextButton switchSoundBool;

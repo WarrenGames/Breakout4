@@ -15,6 +15,8 @@ namespace demos{
 	struct SoundStackData;
 }
 struct PlayerData;
+struct BrickData;
+template<typename T>class MatrixTemp2D;
 
 namespace loadDemo{
 	void openFile(const fs::path& demoFilePath, demos::MainPackage& demosMainPackage, PlayerData& playerData);
@@ -27,9 +29,7 @@ namespace loadDemo{
 	void checkTriggerValue(const fs::path& demoFilePath, int triggerValue, std::size_t fileLineNumber);
 	
 	void readCampaignType(const fs::path& demoFilePath, PlayerData& playerData, std::size_t fileLineNumber, std::istringstream& lineStream);
-	
-	void readLevelIndex(const fs::path& demoFilePath, PlayerData& playerData, std::size_t fileLineNumber, std::istringstream& lineStream);
-	
+		
 	void readSkillLevel(const fs::path& demoFilePath, PlayerData& playerData, std::size_t fileLineNumber, std::istringstream& lineStream);
 	
 	void readPlayerLives(const fs::path& demoFilePath, PlayerData& playerData, std::size_t fileLineNumber, std::istringstream& lineStream);
@@ -63,6 +63,10 @@ namespace loadDemo{
 	void readTaggedPositionEvent(const fs::path& demoFilePath, demos::Stack< demos::TaggedPositionStackData >& positionStack, std::size_t fileLineNumber, std::istringstream& lineStream, const std::string& itemType);
 	
 	void readTaggedDirectionEvent(const fs::path& demoFilePath, demos::Stack< demos::TaggedDirectionStackData >& positionStack, std::size_t fileLineNumber, std::istringstream& lineStream, const std::string& itemType);
+	
+	void readMatrixSize(const fs::path& demoFilePath, MatrixTemp2D< BrickData >& levelMatrix, std::size_t fileLineNumber, std::istringstream& lineStream);
+	
+	void readMatrixElementData(const fs::path& demoFilePath, MatrixTemp2D< BrickData >& levelMatrix, std::size_t fileLineNumber, std::istringstream& lineStream);
 	
 	void throwLineReadError(const fs::path& demoFilePath, std::size_t fileLineNumber, const std::string& errorItem);
 }

@@ -13,7 +13,7 @@ enum{
 
 constexpr SDL_Color SdlVersionTextColor = { 0, 0, 0, 255 };
 
-SDL_VersionDisplay::SDL_VersionDisplay(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const fs::path& languageFilePath, unsigned fontSize, int squareSize):
+SDL_VersionDisplay::SDL_VersionDisplay(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const fs::path& languageFilePath, int fontSize, int squareSize):
 	arialFont{ logs.error, ArialFontPath, fontSize},
 	isLoadingPerfect{ true }
 {

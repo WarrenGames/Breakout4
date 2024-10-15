@@ -15,7 +15,7 @@ sdl2::HorizontalGradient::HorizontalGradient(AppLogFiles& logs, sdl2::RendererWi
 	isLoadingPerfect{true}
 {
 	assert( valueMax != 0 );
-	setNewCounterValue(startValue);
+	setNewCounterValue(static_cast<int>(startValue) );
 }
 
 sdl2::HorizontalGradient::operator bool() const

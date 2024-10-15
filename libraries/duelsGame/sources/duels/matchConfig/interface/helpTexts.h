@@ -10,8 +10,8 @@ namespace sdl2{ class RendererWindow; }
 class ZoneChoiceHelpTexts
 {
 private:
-	const TextsBlocks bonusesHelpTexts;
-	const TextsBlocks zonesNamesTexts;
+	TextsBlocks bonusesHelpTexts;
+	TextsBlocks zonesNamesTexts;
 	std::vector< TextureCombo > bonusesTextures;
 	std::vector< TextureCombo > zonesNamesTextures;
 	

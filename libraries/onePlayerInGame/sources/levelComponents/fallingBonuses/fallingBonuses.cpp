@@ -3,7 +3,7 @@
 #include "crossLevel/playerData.h"
 #include "levelComponents/onePlayerRacket/onePlayerRacket.h"
 #include "levelComponents/balls/ballsThings.h"
-#include "levelComponents/rims/playerRims.h"
+#include "levelComponents/rims/rimsGlobal.h"
 #include "levelComponents/infoBar/infoBar.h"
 #include "matrices/matrix2D.h"
 #include "types/brickData.h"
@@ -114,7 +114,7 @@ void FallingBonuses::addNewFallingBonus(std::size_t bonusIndex, const AccurCoord
 	bonusesData.emplace_back( std::make_unique<FallingBonusData>(bonusIndex, startCoords, newSpeed, newDirVectors) );
 }
 
-void FallingBonuses::detectCollisionWithRacket(PlayerData& playerData, OnePlayerRacket& racket, OnePlayerRims& rims, InfoBar& infoBar, const SoundPlayer& soundPlayer)
+void FallingBonuses::detectCollisionWithRacket(PlayerData& playerData, OnePlayerRacket& racket, OnePlayerRimsSystem& rims, InfoBar& infoBar, const SoundPlayer& soundPlayer)
 {
 	if( false == bonusesData.empty() && haveBonusesMoved )
 	{
@@ -136,7 +136,7 @@ void FallingBonuses::detectCollisionWithRacket(PlayerData& playerData, OnePlayer
 	}
 }
 
-void FallingBonuses::applyBonusModificationToPlayer(std::unique_ptr< FallingBonusData >& bonus, PlayerData& playerData, OnePlayerRacket& racket, OnePlayerRims& rims, 
+void FallingBonuses::applyBonusModificationToPlayer(std::unique_ptr< FallingBonusData >& bonus, PlayerData& playerData, OnePlayerRacket& racket, OnePlayerRimsSystem& rims, 
 													const SoundPlayer& soundPlayer)
 {
 	if( bonus )
@@ -209,7 +209,7 @@ void FallingBonuses::enlargeRims(std::unique_ptr< FallingBonusData >& bonus, Pla
 	bonus.reset();
 }
 
-void FallingBonuses::shrinkRims(std::unique_ptr< FallingBonusData >& bonus, OnePlayerRims& rims, const SoundPlayer& soundPlayer)
+void FallingBonuses::shrinkRims(std::unique_ptr< FallingBonusData >& bonus, OnePlayerRimsSystem& rims, const SoundPlayer& soundPlayer)
 {
 	if( rims.getRimsStatus() >= 0 )
 	{

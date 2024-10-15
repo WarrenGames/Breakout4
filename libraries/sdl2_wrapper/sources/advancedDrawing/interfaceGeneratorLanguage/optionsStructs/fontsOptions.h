@@ -14,12 +14,12 @@ namespace font{
 		std::string fileLine;
 		std::string identifier;
 		fs::path fontPath;
-		unsigned fontSize;
+		int fontSize;
 		unsigned fileLineNumber;
-		unsigned squareSize;
+		int squareSize;
 		bool isLoadingPerfect;
 		
-		explicit Description(const fs::path& toOpenFile, unsigned squareSize_);
+		explicit Description(const fs::path& toOpenFile, int squareSize_);
 		~Description() = default;
 		Description( const Description& ) = delete;
 		Description& operator= ( const Description& ) = delete;

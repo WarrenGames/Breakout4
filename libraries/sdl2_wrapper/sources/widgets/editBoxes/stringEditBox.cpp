@@ -5,7 +5,7 @@
 #include "widgets/editBoxes/subObjects/editBoxes_consts.h"
 #include <sstream>
 
-StringEditBox::StringEditBox(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const SDL_Rect& boxSize, unsigned int fontSize, std::string& obj, unsigned stringMaxSize):
+StringEditBox::StringEditBox(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const SDL_Rect& boxSize, int fontSize, std::string& obj, unsigned stringMaxSize):
 	events{},
 	boxRect{logs, rndWnd, boxSize},
 	cursor{logs, rndWnd, boxSize},

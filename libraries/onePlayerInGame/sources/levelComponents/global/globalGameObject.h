@@ -12,7 +12,7 @@
 #include "generic/texturing/backgroundDrawer.h"
 #include "levelComponents/traceCross/traceCross.h"
 #include "levelComponents/infoBar/infoBar.h"
-#include "levelComponents/rims/playerRims.h"
+#include "levelComponents/rims/rimsGlobal.h"
 #include "levelComponents/fallingBonuses/fallingBonuses.h"
 #include "levelComponents/global/monstersTriggers.h"
 #include "generic/gameSoundSystem/gameSoundSystem.h"
@@ -34,7 +34,7 @@ struct LevelComponents
 {
 	bool isLoadingPerfect;
 	unsigned levelEndType;
-	const sdl2::Font fancyFont;
+	sdl2::Font fancyFont;
 	MatrixTemp2D< BrickData > grid;
 	BricksTexturesLoader bricksTexturesLoader;
 	OnePBricksTextures bricksSprites;
@@ -45,9 +45,9 @@ struct LevelComponents
 	demos::Stack< demos::Matrix2DAction > bricksDestruction;
 	BackgroundDrawer backgroundDrawer;
 	InfoBar infoBar;
-	OnePlayerRims rims;
+	OnePlayerRimsSystem rims;
 	FallingBonuses fallingBonuses;
-	const GameSoundSystem gameSoundSystem;
+	GameSoundSystem gameSoundSystem;
 	demos::Stack< demos::SoundStackData > soundsStack;
 	MonsterTrigger monsterTrigger;
 	TraceCross traceCross;
@@ -96,7 +96,7 @@ private:
 	void setBallPosition(const PlayerData& playerData);
 	void attachMainBallToRacket(const SDL_Rect& racketRect);
 	
-	void collideBallWithRacket();
+	void collideBallWithRacket(unsigned demoKind);
 	
 	void quitGameIfLevelEnded(bool& quitGame, const PlayerData& playerData, LevelInputs& levelInputs) const;
 	

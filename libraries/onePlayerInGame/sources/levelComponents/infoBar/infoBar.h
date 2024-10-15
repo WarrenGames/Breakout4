@@ -22,7 +22,7 @@ class InfoBar
 {
 private:
 	bool isLoadingPerfect;
-	const sdl2::Font fancyFont;
+	sdl2::Font fancyFont;
 	TextureCombo brickTexture;
 	std::vector< TextureCombo > barTexts;
 	std::vector< TextureCombo > blackSquares;

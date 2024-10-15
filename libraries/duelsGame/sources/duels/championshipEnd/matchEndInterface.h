@@ -11,9 +11,9 @@ namespace duels{ struct LevelOptions; }
 class DuelsEndInterface
 {
 private:
-	const sdl2::Font fancyFont;
-	const TextsBlocks texts;
-	const TextureCombo noWinner;
+	sdl2::Font fancyFont;
+	TextsBlocks texts;
+	TextureCombo noWinner;
 	TextureCombo winnerIs;
 	TextureCombo chocolateMedal;
 

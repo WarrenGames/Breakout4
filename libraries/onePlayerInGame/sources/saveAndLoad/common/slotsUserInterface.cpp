@@ -203,7 +203,7 @@ void gameSaving::startSaving(AppLogFiles& logs, const PrefPathFinder& prefPath, 
 	catch( WriteError& e )
 	{
 		logs.error << "Error while saving '" << path::getGameSaveFullPath(prefPath, gameSaveNumber) << "' file because: " << e.what() << ".\n";
-		throw;
+		throw e;
 	}
 }
 
@@ -222,6 +222,6 @@ void gameLoading::startLoading(AppLogFiles& logs, const PrefPathFinder& prefPath
 	catch( ReadError& e )
 	{
 		logs.error << "Error while loading '" << path::getGameSaveFullPath(prefPath, gameSaveNumber) << "' file because: " << e.what() << ".\n";
-		throw;
+		throw e;
 	}
 }

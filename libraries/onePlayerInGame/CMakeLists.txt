@@ -31,7 +31,11 @@ set( HEADERS
 	sources/levelComponents/antarcticEpisodeThings/stalactites/onePlayerStalactitesLoading.h
 	sources/levelComponents/antarcticEpisodeThings/onePlayerPinguins/pinguinsDataLoader.h
 	sources/levelComponents/antarcticEpisodeThings/onePlayerPinguins/onePlayerPinguin.h
+	sources/levelComponents/rims/rimsPast.h
+	sources/levelComponents/rims/rimsScoreValueDrawing.h
 	sources/levelComponents/rims/playerRims.h
+	sources/levelComponents/rims/rimsScoreStock.h
+	sources/levelComponents/rims/rimsGlobal.h
 	sources/levelComponents/hellEpisodeThings/hellSkulls/hellSkullGlobal.h
 	sources/levelComponents/hellEpisodeThings/hellSkulls/inGame/hellSkullElement.h
 	sources/levelComponents/hellEpisodeThings/hellSkulls/inGame/hellSkullPack.h
@@ -103,6 +107,10 @@ set( SOURCES
 	sources/levelComponents/antarcticEpisodeThings/onePlayerPinguins/onePlayerPinguin.cpp
 	sources/levelComponents/antarcticEpisodeThings/onePlayerPinguins/pinguinsDataLoader.cpp
 	sources/levelComponents/rims/playerRims.cpp
+	sources/levelComponents/rims/rimsScoreStock.cpp
+	sources/levelComponents/rims/rimsScoreValueDrawing.cpp
+	sources/levelComponents/rims/rimsGlobal.cpp
+	sources/levelComponents/rims/rimsPast.cpp
 	sources/levelComponents/hellEpisodeThings/hellSkulls/hellSkullGlobal.cpp
 	sources/levelComponents/hellEpisodeThings/hellSkulls/inGame/hellSkullElement.cpp
 	sources/levelComponents/hellEpisodeThings/hellSkulls/inGame/hellSkullPack.cpp
@@ -150,6 +158,10 @@ add_library(
 	${SOURCES} 
 	${HEADERS} 
 	${INC_DIRS}
+)
+
+source_group( TREE ${CMAKE_CURRENT_SOURCE_DIR}
+	FILES ${HEADERS} ${SOURCES}
 )
 
 target_include_directories(${PROJECT_NAME}

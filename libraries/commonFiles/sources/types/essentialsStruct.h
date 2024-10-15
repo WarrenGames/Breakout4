@@ -20,8 +20,6 @@ struct Essentials
 	~Essentials() = default;
 	Essentials( const Essentials& ) = delete;
 	Essentials& operator= ( const Essentials& ) = delete;
-	Essentials( Essentials&& ) = default;
-	Essentials& operator= ( Essentials&& ) = default;
 };
 
 #endif //ESSENTIALS_STRUCT_H

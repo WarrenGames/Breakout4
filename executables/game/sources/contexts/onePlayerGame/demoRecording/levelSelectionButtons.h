@@ -19,7 +19,7 @@ class LevelsButtons
 {
 private:
 	std::size_t currentPageNumber;
-	const sdl2::Font arial;
+	sdl2::Font arial;
 	std::vector< std::vector< TextButton > > buttons;
 
 public:

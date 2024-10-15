@@ -7,8 +7,8 @@ constexpr char ArialFontPath[] = "fonts/arial.ttf";
 
 constexpr char FancyFontPath[] = "fonts/LuckiestGuy.ttf";
 
-constexpr unsigned FontSmallPointSize = 16 * SQR_SIZE / 64;
-constexpr unsigned FontMediumPointSize = 22 * SQR_SIZE / 64;
-constexpr unsigned FontBigPointSize = 30 * SQR_SIZE / 64;
+constexpr int FontSmallPointSize = 16 * SQR_SIZE / 64;
+constexpr int FontMediumPointSize = 22 * SQR_SIZE / 64;
+constexpr int FontBigPointSize = 30 * SQR_SIZE / 64;
 
 #endif //FONTS_CONSTS_H

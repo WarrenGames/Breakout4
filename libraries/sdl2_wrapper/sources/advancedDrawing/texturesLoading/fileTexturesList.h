@@ -3,9 +3,9 @@
 
 #include "texturing/textureLoader.h"
 #include <vector>
+#include <string>
 
 namespace sdl2{ class RendererWindow; }
-
 struct AppLogFiles;
 
 class TexturesFilesList

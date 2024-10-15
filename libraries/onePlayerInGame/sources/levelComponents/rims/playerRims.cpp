@@ -1,6 +1,5 @@
 #include "levelComponents/rims/playerRims.h"
 #include "consts/rimsConsts.h"
-#include "types/essentialsStruct.h"
 #include "consts/constexprScreen.h"
 #include <cassert>
 
@@ -9,8 +8,7 @@ constexpr int RimActY_Position = GameScreenHeight - SQR_SIZE;
 
 constexpr int RimSideSize = SQR_SIZE;
 
-OnePlayerRims::OnePlayerRims(Essentials& essentials, int rimsStartState):
-	rimTexture{essentials.logs, essentials.rndWnd, "textures/sprites/bricks/purpleRim.png"},
+OnePlayerRimsState::OnePlayerRimsState(int rimsStartState):
 	rimsCoordinates{rims::RimSideNum, rims::RemoveMax},
 	activesRimsNumber{rimsStartState},
 	rimsMovement{rims::RimIsStatic, rims::RimIsStatic, rims::RimIsStatic},
@@ -19,54 +17,52 @@ OnePlayerRims::OnePlayerRims(Essentials& essentials, int rimsStartState):
 	initializeOffsets(rimsStartState);
 }
 
-void OnePlayerRims::update()
+void OnePlayerRimsState::update()
 {
 	moveActiveRims();
 	watchStatus();
 }
 
-int OnePlayerRims::getRimsStatus() const
+int OnePlayerRimsState::getRimsStatus() const
 {
 	return activesRimsNumber;
 }
 
-void OnePlayerRims::changeStatus(int change)
+unsigned OnePlayerRimsState::getRimMovement(std::size_t index) const
+{
+	assert( index < rimsMovement.size() );
+	return rimsMovement[index];
+}
+
+void OnePlayerRimsState::changeStatus(int change)
 {
 	assert( change == -1 || change == 1 );
 	activesRimsNumber += change;
 }
 
-void OnePlayerRims::drawEverything(Essentials& essentials)
-{
-	for( auto const &rimOffset : rimsCoordinates )
-	{
-		rimTexture.draw(essentials.rndWnd, rimOffset.x, rimOffset.y);
-	}
-}
-
-std::vector<SDL_Rect>::const_iterator OnePlayerRims::begin() const
+std::vector<SDL_Rect>::const_iterator OnePlayerRimsState::begin() const
 {
 	return rimsCoordinates.begin();
 }
 
-std::vector<SDL_Rect>::const_iterator OnePlayerRims::end() const
+std::vector<SDL_Rect>::const_iterator OnePlayerRimsState::end() const
 {
 	return rimsCoordinates.end();
 }
 
-void OnePlayerRims::moveActiveRims()
+void OnePlayerRimsState::moveActiveRims()
 {
 	if( rimMovementDelay.hasTimeElapsed( std::chrono::milliseconds{2000 / SQR_SIZE / 2} ) )
 	{
+		rimMovementDelay.joinTimePoints();
 		for( std::size_t i{0} ; i < rims::RemoveMax ; ++i )
 		{
 			actWithRimStatus(i);
 		}
-		rimMovementDelay.joinTimePoints();
 	}
 }
 
-void OnePlayerRims::actWithRimStatus(std::size_t rimIndex)
+void OnePlayerRimsState::actWithRimStatus(std::size_t rimIndex)
 {
 	switch( rimsMovement[rimIndex] )
 	{
@@ -85,14 +81,14 @@ void OnePlayerRims::actWithRimStatus(std::size_t rimIndex)
 	}
 }
 
-void OnePlayerRims::moveRim(std::size_t rimIndex, int offsetAdd)
+void OnePlayerRimsState::moveRim(std::size_t rimIndex, int offsetAdd)
 {
 	assert( rimIndex < rims::RemoveMax );
 	rimsCoordinates(rims::LeftRims, rimIndex).y += offsetAdd;
 	rimsCoordinates(rims::RightRims, rimIndex).y += offsetAdd;
 }
 
-void OnePlayerRims::watchStatus()
+void OnePlayerRimsState::watchStatus()
 {
 	for( int rimNum{0} ; rimNum < static_cast<int>(rimsMovement.size()) ; ++rimNum )
 	{
@@ -100,7 +96,7 @@ void OnePlayerRims::watchStatus()
 	}
 }
 
-void OnePlayerRims::setRimMoveType(int rimNum)
+void OnePlayerRimsState::setRimMoveType(int rimNum)
 {
 	if( activesRimsNumber == rimNum )
 	{
@@ -125,7 +121,7 @@ void OnePlayerRims::setRimMoveType(int rimNum)
 	}
 }
 
-void OnePlayerRims::initializeOffsets(int rimsStartState)
+void OnePlayerRimsState::initializeOffsets(int rimsStartState)
 {
 	rimsCoordinates(0, 0) = SDL_Rect{ 0, RimOffY_Position, RimSideSize, RimSideSize};//case 0
 	rimsCoordinates(0, 1) = SDL_Rect{ SQR_SIZE, RimOffY_Position, RimSideSize, RimSideSize};//case 2

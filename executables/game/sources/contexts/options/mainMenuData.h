@@ -15,13 +15,13 @@ namespace optionsMenu{
 class MainMenu 
 {
 private:
-	const TextsBlocks languagesTexts;
-	const sdl2::Font fancyFont;
-	const TextureCombo title;
-	const TextureCombo graphismsVignette;
-	const TextureCombo soundImage;
-	const TextureCombo musicImage;
-	const TextureCombo screenBackground;
+	TextsBlocks languagesTexts;
+	sdl2::Font fancyFont;
+	TextureCombo title;
+	TextureCombo graphismsVignette;
+	TextureCombo soundImage;
+	TextureCombo musicImage;
+	TextureCombo screenBackground;
 	std::vector< TextButton > categoriesTexts;
 
 public:

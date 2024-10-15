@@ -5,7 +5,7 @@
 #include "consts/fontsPaths.h"
 #include <sstream>
 
-void igl::font::openScriptFile(AppLogFiles& logs, std::vector< sdl2::Font >& fonts, const std::string& scriptFile, unsigned squareSize)
+void igl::font::openScriptFile(AppLogFiles& logs, std::vector< sdl2::Font >& fonts, const std::string& scriptFile, int squareSize)
 {
 	if( std::ifstream fontDescriptionFile{ scriptFile } )
 	{
@@ -76,7 +76,7 @@ void igl::font::appendProportionalFontSize(AppLogFiles& logs, igl::font::Descrip
 {
 	if( data.identifier == igl::font::ProportionalSize )
 	{
-		unsigned readValue{0};
+		int readValue{0};
 		if( lineStream >> readValue )
 		{
 			if( readValue > 0 )
@@ -98,7 +98,7 @@ void igl::font::appendStaticFontSize(AppLogFiles& logs, igl::font::Description& 
 {
 	if( data.identifier == igl::font::StaticSize )
 	{
-		unsigned readValue{0};
+		int readValue{0};
 		if( lineStream >> readValue )
 		{
 			if( readValue > 0 )
@@ -116,7 +116,7 @@ void igl::font::appendStaticFontSize(AppLogFiles& logs, igl::font::Description& 
 	}
 }
 
-void igl::font::logBadFontSizeValue(AppLogFiles& logs, igl::font::Description& data, unsigned readValue)
+void igl::font::logBadFontSizeValue(AppLogFiles& logs, igl::font::Description& data, int readValue)
 {
 	logs.error << "Error: bad font size value : " << readValue << " in '" << data.scriptFilePath << "' file at line number " << data.fileLineNumber << " .\n";
 	data.isLoadingPerfect = false;

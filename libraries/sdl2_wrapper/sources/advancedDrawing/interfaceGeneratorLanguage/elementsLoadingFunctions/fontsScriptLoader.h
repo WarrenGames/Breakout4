@@ -12,7 +12,7 @@ namespace igl{
 namespace font{
 	struct Description;
 	
-	void openScriptFile(AppLogFiles& logs, std::vector< sdl2::Font >& fonts, const std::string& scriptFile, unsigned squareSize);
+	void openScriptFile(AppLogFiles& logs, std::vector< sdl2::Font >& fonts, const std::string& scriptFile, int squareSize);
 	
 	void addFontIfNothingFailed(AppLogFiles& logs, std::vector< sdl2::Font >& fonts, igl::font::Description& data);
 	
@@ -28,7 +28,7 @@ namespace font{
 	
 	void appendStaticFontSize(AppLogFiles& logs, igl::font::Description& data, std::istringstream& lineStream);
 	
-	void logBadFontSizeValue(AppLogFiles& logs, igl::font::Description& data, unsigned readValue);
+	void logBadFontSizeValue(AppLogFiles& logs, igl::font::Description& data, int readValue);
 }
 
 }

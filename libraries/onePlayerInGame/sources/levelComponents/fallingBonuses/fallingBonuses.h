@@ -10,7 +10,7 @@
 struct Essentials;
 struct PlayerData;
 struct OnePlayerRacket;
-class OnePlayerRims;
+class OnePlayerRimsSystem;
 class InfoBar;
 class SoundPlayer;
 struct BrickData;
@@ -59,15 +59,15 @@ public:
 	void update();
 	void addNewFallingBonus(std::size_t bonusIndex, const AccurCoords& startCoords, double newSpeed, const Offset& newDirVectors);
 	
-	void detectCollisionWithRacket(PlayerData& playerData, OnePlayerRacket& racket, OnePlayerRims& rims, InfoBar& infoBar, const SoundPlayer& soundPlayer);
+	void detectCollisionWithRacket(PlayerData& playerData, OnePlayerRacket& racket, OnePlayerRimsSystem& rims, InfoBar& infoBar, const SoundPlayer& soundPlayer);
 
 private:
-	void applyBonusModificationToPlayer(std::unique_ptr< FallingBonusData >& bonus, PlayerData& playerData, OnePlayerRacket& racket, OnePlayerRims& rims, const SoundPlayer& soundPlayer);
+	void applyBonusModificationToPlayer(std::unique_ptr< FallingBonusData >& bonus, PlayerData& playerData, OnePlayerRacket& racket, OnePlayerRimsSystem& rims, const SoundPlayer& soundPlayer);
 	void improveBall(std::unique_ptr< FallingBonusData >& bonus, PlayerData& playerData, const SoundPlayer& soundPlayer);
 	void speedUpRacket(std::unique_ptr< FallingBonusData >& bonus, PlayerData& playerData, const SoundPlayer& soundPlayer);
 	void speedDownRacket(std::unique_ptr< FallingBonusData >& bonus, PlayerData& playerData, OnePlayerRacket& racket, const SoundPlayer& soundPlayer);
 	void enlargeRims(std::unique_ptr< FallingBonusData >& bonus, PlayerData& playerData, const SoundPlayer& soundPlayer);
-	void shrinkRims(std::unique_ptr< FallingBonusData >& bonus, OnePlayerRims& rims, const SoundPlayer& soundPlayer);
+	void shrinkRims(std::unique_ptr< FallingBonusData >& bonus, OnePlayerRimsSystem& rims, const SoundPlayer& soundPlayer);
 	void enlargeRacket(std::unique_ptr< FallingBonusData >& bonus, PlayerData& playerData, const SoundPlayer& soundPlayer);
 	void shrinkRacket(std::unique_ptr< FallingBonusData >& bonus, OnePlayerRacket& racket, const SoundPlayer& soundPlayer);
 	void addOneLife(std::unique_ptr< FallingBonusData >& bonus, PlayerData& playerData, const SoundPlayer& soundPlayer);

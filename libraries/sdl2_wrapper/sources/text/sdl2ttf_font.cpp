@@ -2,7 +2,7 @@
 #include "logging/logFile.h"
 #include <string>
 
-sdl2::Font::Font(LogFile& log, const fs::path& fontPath, unsigned fontSize):
+sdl2::Font::Font(LogFile& log, const fs::path& fontPath, int fontSize):
 	font{ TTF_OpenFont(fontPath.string().c_str(), fontSize) }
 {
 	outputAnErrorMessage(log, fontPath);
@@ -18,7 +18,7 @@ TTF_Font* sdl2::Font::get() const
 	return font.get();
 }
 
-void sdl2::Font::reset(LogFile& log, const fs::path& fontPath, unsigned fontSize)
+void sdl2::Font::reset(LogFile& log, const fs::path& fontPath, int fontSize)
 {
 	font.reset( TTF_OpenFont(fontPath.string().c_str(), fontSize) );
 	outputAnErrorMessage(log, fontPath);

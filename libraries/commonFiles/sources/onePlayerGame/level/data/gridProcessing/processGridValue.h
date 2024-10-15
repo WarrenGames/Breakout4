@@ -10,19 +10,19 @@ namespace onePlGame{
 
 namespace gridProcess{
 	
-	unsigned getValue(const MatrixTemp2D<BrickData>& grid);
+	int getValue(const MatrixTemp2D<BrickData>& grid);
 	
-	void actWithBrickType(const BrickData& brickData, unsigned& totalValue);
+	void actWithBrickType(const BrickData& brickData, int& totalValue);
 	
-	void actWithGenericBrick(const BrickData& brickData, unsigned& totalValue);
+	void actWithGenericBrick(const BrickData& brickData, int& totalValue);
 	
-	void actWithRichBrick(const BrickData& brickData, unsigned& totalValue);
+	void actWithRichBrick(const BrickData& brickData, int& totalValue);
 	
-	void actWithBonusCoin(unsigned& totalValue);
+	void actWithBonusCoin(int& totalValue);
 	
-	void actWithGiftBrick(unsigned& totalValue);
+	void actWithGiftBrick(int& totalValue);
 	
-	void actWithTenPointsBrick(const BrickData& brickData, unsigned& totalValue);
+	void actWithTenPointsBrick(const BrickData& brickData, int& totalValue);
 }
 
 }

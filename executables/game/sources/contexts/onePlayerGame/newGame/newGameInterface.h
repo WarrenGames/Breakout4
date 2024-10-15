@@ -19,10 +19,10 @@ namespace onePlGame{
 		
 		struct Interface
 		{
-			const sdl2::Font fancyFont;
-			const TextsBlocks languageTexts;
-			const TextureCombo screenTitle;
-			const TextureCombo screenBackground;
+			sdl2::Font fancyFont;
+			TextsBlocks languageTexts;
+			TextureCombo screenTitle;
+			TextureCombo screenBackground;
 			TextButton newGameButton;
 			TextButton loadASavedGame;
 			TextButton seeDoneScores;

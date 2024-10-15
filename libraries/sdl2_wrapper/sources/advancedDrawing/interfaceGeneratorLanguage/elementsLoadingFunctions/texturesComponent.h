@@ -17,10 +17,10 @@ namespace igl{
 namespace texture{
 	struct Description;
 	
-	void openScriptFileWithImageOnly(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, std::vector< TextureCombo >& textures, const fs::path& scriptFile, unsigned squareSize);
+	void openScriptFileWithImageOnly(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, std::vector< TextureCombo >& textures, const fs::path& scriptFile, int squareSize);
 	
 	void openScriptFile(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const sdl2::Font& font, const TextsBlocks& texts, 
-						std::vector< TextureCombo >& textures, const fs::path& scriptFile, unsigned squareSize);
+						std::vector< TextureCombo >& textures, const fs::path& scriptFile, int squareSize);
 	
 	void checkData(const TextsBlocks& texts, const igl::texture::Description& data);
 	

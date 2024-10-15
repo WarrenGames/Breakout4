@@ -9,7 +9,7 @@ struct AppLogFiles;
 class SoundVolumeLoader
 {
 private:
-	unsigned globalSoundVolume;
+	int globalSoundVolume;
 	bool isLoadingPerfect;
 	bool soundIsActivated;
 
@@ -22,7 +22,7 @@ public:
 	SoundVolumeLoader& operator= ( SoundVolumeLoader&& ) = default;
 	
 	bool wasLoadingPerfect() const;
-	unsigned getLoadedSoundVolume() const;
+	int getLoadedSoundVolume() const;
 	bool isSoundActive() const;
 
 private:

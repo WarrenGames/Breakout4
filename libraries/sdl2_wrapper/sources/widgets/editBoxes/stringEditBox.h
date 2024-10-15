@@ -25,7 +25,7 @@ private:
 	bool hasStringChanged;
 	
 public:
-	explicit StringEditBox(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const SDL_Rect& boxSize, unsigned int fontSize, std::string& obj, unsigned stringMaxSize);
+	explicit StringEditBox(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const SDL_Rect& boxSize, int fontSize, std::string& obj, unsigned stringMaxSize);
 	~StringEditBox() = default;
 	StringEditBox( const StringEditBox& ) = delete;
 	StringEditBox& operator= ( const StringEditBox& ) = delete;

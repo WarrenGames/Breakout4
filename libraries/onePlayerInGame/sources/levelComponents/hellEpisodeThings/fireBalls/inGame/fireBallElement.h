@@ -16,7 +16,7 @@ namespace onePlGame{
 
 struct FireBallElement
 {
-	const Offset startPosition;
+	Offset startPosition;
 	FireBallDrawData drawData;
 	spriteMove::MovementThings move;
 	spriteMove::StarTypeThings starThings;

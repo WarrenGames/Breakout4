@@ -10,7 +10,7 @@
 constexpr SDL_Color BackgroundColor = { 128, 128, 128, 255 };
 constexpr char SdlLogoTextureFilePath[] = "textures/sdlLogo/sdlLogo1280.png";
 
-void logoDisplay::mainContext(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const fs::path& logoDisplayStatusFile, const fs::path& languageFilePath, unsigned fontSize, int squareSize)
+void logoDisplay::mainContext(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const fs::path& logoDisplayStatusFile, const fs::path& languageFilePath, int fontSize, int squareSize)
 {
 	if( logoDisplay::getSdlLogoDisplayStatus(logs, logoDisplayStatusFile) )
 	{

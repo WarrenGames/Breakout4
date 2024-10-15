@@ -13,8 +13,8 @@ struct Essentials;
 struct ZoneChoiceThings
 {
 	unsigned selectedZone;
-	const sdl2::Font fancyFont;
-	const TextsBlocks screenTexts;
+	sdl2::Font fancyFont;
+	TextsBlocks screenTexts;
 	duels::LevelOptions levelOptions;
 	duels::BonusEditBoxes bonusBoxes;
 	ZoneChoiceGraphics graphics;
@@ -22,8 +22,8 @@ struct ZoneChoiceThings
 	TextButton inputScreenButton;
 	TextButton zoneChoiceButton;
 	TextButton runZoneButton;
-	const TextureCombo titleText;
-	const TextureCombo finalAchievementHint;
+	TextureCombo titleText;
+	TextureCombo finalAchievementHint;
 	duels::OtherOptions ballAndCoinOptions;
 	
 	explicit ZoneChoiceThings(Essentials& essentials, unsigned finalAchievementHint);

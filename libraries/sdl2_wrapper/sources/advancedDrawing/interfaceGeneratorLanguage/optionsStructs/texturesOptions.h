@@ -42,10 +42,10 @@ namespace texture{
 		igl::texture::ImageOptions imageOptions;
 		igl::texture::TextOptions textOptions;
 		TexturePosition position;
-		unsigned squareSize;
+		int squareSize;
 		bool isLoadingPerfect;
 		
-		explicit Description(const fs::path& toOpenFile, unsigned squareSize_);
+		explicit Description(const fs::path& toOpenFile, int squareSize_);
 		~Description() = default;
 		Description( const Description& ) = delete;
 		Description& operator= ( const Description& ) = delete;

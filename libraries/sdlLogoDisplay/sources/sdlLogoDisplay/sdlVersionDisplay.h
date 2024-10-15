@@ -13,12 +13,12 @@ class SDL_VersionDisplay
 {
 private:
 	SDL_version sdlVersion;
-	const sdl2::Font arialFont;
+	sdl2::Font arialFont;
 	TextureCombo textTexture;
 	bool isLoadingPerfect;
 
 public:
-	explicit SDL_VersionDisplay(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const fs::path& languageFilePath, unsigned fontSize, int squareSize);
+	explicit SDL_VersionDisplay(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const fs::path& languageFilePath, int fontSize, int squareSize);
 	~SDL_VersionDisplay() = default;
 	SDL_VersionDisplay( const SDL_VersionDisplay& ) = delete;
 	SDL_VersionDisplay& operator= ( const SDL_VersionDisplay& ) = delete;

@@ -15,7 +15,7 @@ bool SoundVolumeLoader::wasLoadingPerfect() const
 	return isLoadingPerfect;
 }
 
-unsigned SoundVolumeLoader::getLoadedSoundVolume() const
+int SoundVolumeLoader::getLoadedSoundVolume() const
 {
 	return globalSoundVolume;
 }

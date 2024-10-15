@@ -12,17 +12,17 @@ namespace optionsMenu{
 class GraphicsData
 {
 private:
-	const TextsBlocks languagesTexts;
-	const sdl2::Font fancyFont;
+	TextsBlocks languagesTexts;
+	sdl2::Font fancyFont;
 	unsigned framePerSecond;
 	UintEditBox frameEditBox;
 	bool displaySdl2Logo;
 	BoolEditBox displayLogoEditBox;
-	const TextureCombo panelTitle;
-	const TextureCombo displayLogoInfoText;
-	const TextureCombo boxName;
-	const TextureCombo hintOnFrame;
-	const TextureCombo screenBackground;
+	TextureCombo panelTitle;
+	TextureCombo displayLogoInfoText;
+	TextureCombo boxName;
+	TextureCombo hintOnFrame;
+	TextureCombo screenBackground;
 	TextButton quitButton;
 	
 public:

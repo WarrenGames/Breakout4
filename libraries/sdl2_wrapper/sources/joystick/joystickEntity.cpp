@@ -21,9 +21,9 @@ void sdl2::JoystickEntity::loadJoystickData(SDL_JoystickID joystickNum)
 {
 	if( joystickPtr )
 	{
-		hatNumber = SDL_JoystickNumHats(joystickPtr.get());
-		axisNumber = SDL_JoystickNumAxes(joystickPtr.get());
-		buttonsNumber = SDL_JoystickNumButtons(joystickPtr.get());
+		hatNumber = static_cast<unsigned>( SDL_JoystickNumHats(joystickPtr.get() ) );
+		axisNumber = static_cast<unsigned>( SDL_JoystickNumAxes(joystickPtr.get() ) );
+		buttonsNumber = static_cast<unsigned>( SDL_JoystickNumButtons(joystickPtr.get() ) );
 		joystickName = SDL_JoystickName(joystickPtr.get());
 		loadingStatus = "The joystick #" + std::to_string( joystickNum) + " was loaded pefectly."; 
 	}

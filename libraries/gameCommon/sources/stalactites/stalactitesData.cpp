@@ -11,8 +11,7 @@ StalactiteData::StalactiteData(const Offset& position):
 	trembleIndex{0},
 	direction{stalactites::DefaultDirection},
 	rumbleCount{0},
-	state{ stalactites::StateStatic },
-	length{ stalactites::DefaultLength }
+	state{ stalactites::StateStatic }
 {
 
 }
@@ -23,8 +22,7 @@ StalactiteData::StalactiteData(const Offset& position, unsigned newDirection):
 	trembleIndex{0},
 	direction{newDirection},
 	rumbleCount{0},
-	state{ stalactites::StateStatic },
-	length{ stalactites::DefaultLength }
+	state{ stalactites::StateStatic }
 {
 	
 }

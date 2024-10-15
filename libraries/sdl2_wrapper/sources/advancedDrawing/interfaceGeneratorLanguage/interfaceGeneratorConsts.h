@@ -10,14 +10,14 @@
 		Font nomenclature:
 		'Font' "Font Path" [font size]
 		
-		Texts blocks nomenclature
+		Texts blocks nomenclature:
 		'TextsBlocks' "file path" [expected string lines]
 		
 		Text Texture nomenclature:
 		'Texture' 'Text' 'TextNum' [TextsBlocksIndex] 'Color' [red value] [green value] [blue value] [alpha value] 
 			('ProportionalPosition' or 'StaticPosition') [x coord] [y coord] 'CenterOnX' [1 or 0] 'CenterOnY' [1 or 0]
 		
-		Image Texture
+		Image Texture nomenclature:
 		'Texture' 'Image' "texture path" ('ProportionalPosition' or 'StaticPosition') [x coord] [y coord] 'CenterOnX' [1 or 0] 'CenterOnY' [1 or 0]
   
 */  

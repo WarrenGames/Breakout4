@@ -3,16 +3,16 @@
 #include "types/brickData.h"
 #include <algorithm>
 
-unsigned onePlGame::gridProcess::getValue(const MatrixTemp2D<BrickData>& grid)
+int onePlGame::gridProcess::getValue(const MatrixTemp2D<BrickData>& grid)
 {
-	unsigned totalValue{0};
+	int totalValue{0};
 	
 	std::for_each( std::cbegin(grid), std::cend(grid), [&totalValue](auto &brickData){ actWithBrickType(brickData, totalValue); } );
 	
 	return totalValue;
 }
 
-void onePlGame::gridProcess::actWithBrickType(const BrickData& brickData, unsigned& totalValue)
+void onePlGame::gridProcess::actWithBrickType(const BrickData& brickData, int& totalValue)
 {
 	switch( brickData.index )
 	{
@@ -34,12 +34,12 @@ void onePlGame::gridProcess::actWithBrickType(const BrickData& brickData, unsign
 	}
 }
 
-void onePlGame::gridProcess::actWithGenericBrick(const BrickData& brickData, unsigned& totalValue)
+void onePlGame::gridProcess::actWithGenericBrick(const BrickData& brickData, int& totalValue)
 {
 	totalValue += ( brickData.property + 1 ) * 10;
 }
 
-void onePlGame::gridProcess::actWithRichBrick(const BrickData& brickData, unsigned& totalValue)
+void onePlGame::gridProcess::actWithRichBrick(const BrickData& brickData, int& totalValue)
 {
 	switch( brickData.property )
 	{
@@ -58,17 +58,17 @@ void onePlGame::gridProcess::actWithRichBrick(const BrickData& brickData, unsign
 	}
 }
 
-void onePlGame::gridProcess::actWithBonusCoin(unsigned& totalValue)
+void onePlGame::gridProcess::actWithBonusCoin(int& totalValue)
 {
 	totalValue += 10;
 }
 
-void onePlGame::gridProcess::actWithGiftBrick(unsigned& totalValue)
+void onePlGame::gridProcess::actWithGiftBrick(int& totalValue)
 {
 	totalValue += 10;
 }
 
-void onePlGame::gridProcess::actWithTenPointsBrick(const BrickData& brickData, unsigned& totalValue)
+void onePlGame::gridProcess::actWithTenPointsBrick(const BrickData& brickData, int& totalValue)
 {
-	totalValue += -10 * brickData.property + 80;
+	totalValue += -10 * static_cast<int>(brickData.property) + 80;
 }

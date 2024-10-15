@@ -13,7 +13,7 @@ void initPrefPath::startGame()
 		initPrefPath::checkPrefPath(prefPath);
 	}
 	else{
-		std::cout << "Error: couldn't find pref path, because: " << prefPath.getError() << std::endl;
+		std::cout << "Error: couldn't find pref path, because: " << prefPath.getError() << '\n';
 	}
 }
 

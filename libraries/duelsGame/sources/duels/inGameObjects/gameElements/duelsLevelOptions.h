@@ -37,7 +37,7 @@ namespace duels{
 		const fs::path& getSoundsListFilePath() const;
 		const fs::path& getChannelsConfigFilePath() const;
 		unsigned getExpectedSoundsNumber() const;
-		unsigned getExpectedGroupsTagNumber() const;
+		int getExpectedGroupsTagNumber() const;
 	};
 }
 

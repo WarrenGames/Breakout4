@@ -113,7 +113,7 @@ void MusicConfig::readDataFile(Essentials& essentials)
 {
 	if( std::ifstream soundFile{ path::getConfigDirFile(essentials.prefPath, file::MusicConfigFile) } )
 	{
-		unsigned musicVolume{MIX_MAX_VOLUME};
+		int musicVolume{MIX_MAX_VOLUME};
 		if( soundFile >> isMusicActive >> musicVolume )
 		{
 			volBar.setVolume(musicVolume);

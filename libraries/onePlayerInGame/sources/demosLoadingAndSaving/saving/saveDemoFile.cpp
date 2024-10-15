@@ -2,6 +2,7 @@
 #include "levelComponents/demosObjects/demoMainPackage.h"
 #include "consts/singlePlayerDemoConsts.h"
 #include "exceptions/writeErrorExcept.h"
+#include "consts/onePlayerGridConsts.h"
 #include <fstream>
 
 void saveDemo::openGameDemoFile(const fs::path& demoFilePath, const demos::MainPackage& mainPackage)
@@ -25,7 +26,6 @@ void saveDemo::openGameDemoFile(const fs::path& demoFilePath, const demos::MainP
 void saveDemo::saveData(const fs::path& demoFilePath, std::ofstream& demoFile, const demos::MainPackage& mainPackage)
 {
 	saveDemo::saveCampaignType(demoFilePath, demoFile, mainPackage.startingData);
-	saveDemo::saveLevelIndex(demoFilePath, demoFile, mainPackage.startingData);
 	saveDemo::saveSkillLevel(demoFilePath, demoFile, mainPackage.startingData);
 	saveDemo::savePlayerLives(demoFilePath, demoFile, mainPackage.startingData);
 	saveDemo::saveRacketSize(demoFilePath, demoFile, mainPackage.startingData);
@@ -46,6 +46,8 @@ void saveDemo::saveData(const fs::path& demoFilePath, std::ofstream& demoFile, c
 	saveDemo::saveTaggedDirections(demoFilePath, demoFile, mainPackage.antarcticDemoPackage.pinguinsDirection, "pinguins directions", onePlGame::demosFileIndex::PinguinsDirection);
 	saveDemo::saveActionEvent(demoFilePath, demoFile, mainPackage.antarcticDemoPackage.pinguinsCreateAndDestroy, "pinguins create and destroy", onePlGame::demosFileIndex::PinguinsCreateAndDestroy);
 	saveDemo::saveSoundEvents(demoFilePath, demoFile, mainPackage.antarcticDemoPackage.pinguinsQuacks, "pinguins quack sound event", onePlGame::demosFileIndex::PinguinQuackSoundEvent);
+	saveDemo::saveMatrixSize(demoFilePath, demoFile, mainPackage.grid);
+	saveDemo::saveMatrixElements(demoFilePath, demoFile, mainPackage.grid);
 }
 
 void saveDemo::saveCampaignType(const fs::path& demoFilePath, std::ofstream& demoFile, const demos::StartingData& startingData)
@@ -53,14 +55,6 @@ void saveDemo::saveCampaignType(const fs::path& demoFilePath, std::ofstream& dem
 	if( ! ( demoFile << onePlGame::demosFileIndex::CampaignType << " " << startingData.campaignType << '\n' ) )
 	{
 		saveDemo::throwWriteErrorExcept(demoFilePath, "campaign type");
-	}
-}
-
-void saveDemo::saveLevelIndex(const fs::path& demoFilePath, std::ofstream& demoFile, const demos::StartingData& startingData)
-{
-	if( ! ( demoFile << onePlGame::demosFileIndex::LevelIndex << " " << startingData.levelIndex << '\n' ) )
-	{
-		saveDemo::throwWriteErrorExcept(demoFilePath, "level index");
 	}
 }
 
@@ -220,6 +214,32 @@ void saveDemo::saveTaggedDirections(const fs::path& demoFilePath, std::ofstream&
 			if( ! ( demoFile << indexEnum << " " << static_cast<long int>( it->delay.count() ) << " " << it->itemTagNumber << " " << it->direction << '\n' ) )
 			{
 				saveDemo::throwWriteErrorExcept(demoFilePath, itemType);
+			}
+		}
+	}
+}
+
+void saveDemo::saveMatrixSize(const fs::path& demoFilePath, std::ofstream& demoFile, const MatrixTemp2D< BrickData >& levelMatrix)
+{
+	if( ! ( demoFile << onePlGame::demosFileIndex::MatrixSize << " " << levelMatrix.width() << " " << levelMatrix.height() << '\n' ) )
+	{
+		saveDemo::throwWriteErrorExcept(demoFilePath, "matrixSize");
+	}
+}
+
+void saveDemo::saveMatrixElements(const fs::path& demoFilePath, std::ofstream& demoFile, const MatrixTemp2D< BrickData >& levelMatrix)
+{
+	for( std::size_t height{0} ; height < levelMatrix.height() ; ++height )
+	{
+		for (std::size_t width{ 0 }; width < levelMatrix.width(); ++width)
+		{
+			if( levelMatrix(width, height).index != bricks::index::NoBrick )
+			{
+				if (!(demoFile << onePlGame::demosFileIndex::MatrixElement << " " << height << " " << width << " "
+					<< levelMatrix(width, height).index << " " << levelMatrix(width, height).property << '\n'))
+				{
+					saveDemo::throwWriteErrorExcept(demoFilePath, "matrix element");
+				}
 			}
 		}
 	}

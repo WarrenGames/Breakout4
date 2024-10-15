@@ -17,8 +17,8 @@ private:
 	bool *boolValue;
 	
 public:
-	explicit BoolEditBox(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const SDL_Rect& boxSize, unsigned int fontSize);
-	explicit BoolEditBox(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const SDL_Rect& boxSize, unsigned int fontSize, bool& ref);
+	explicit BoolEditBox(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const SDL_Rect& boxSize, int fontSize);
+	explicit BoolEditBox(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const SDL_Rect& boxSize, int fontSize, bool& ref);
 	~BoolEditBox() = default;
 	BoolEditBox(BoolEditBox& ) = delete;
 	BoolEditBox& operator= (BoolEditBox& ) = delete;

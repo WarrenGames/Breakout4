@@ -67,7 +67,7 @@ void halloween::collideWithYellowPumpkin(PlayersThings& playersThings, unsigned 
 	if( playersThings.rackets[playerType].canBeSlowedDown() )
 	{
 		playersThings.rackets[playerType].changeSpeed(-1);
-		playersThings.racketsSpeedGradients[playerType].setNewCounterValue( static_cast<unsigned int>(playersThings.rackets[playerType].getSpeed()-duels::RacketMinimumSpeed ) );
+		playersThings.racketsSpeedGradients[playerType].setNewCounterValue( static_cast<int>(playersThings.rackets[playerType].getSpeed()-duels::RacketMinimumSpeed ) );
 		if( pumpkin.isFromBat )
 			bat.changeFace(bat::FaceHappy);
 	}

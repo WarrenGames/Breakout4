@@ -112,7 +112,7 @@ void BoxEvents::fillLowerCaseKeys(SDL_Keycode keycode, bool isPressed, bool isCa
 	{
 		if( keycode >= 'a' && keycode <= 'z' )
 		{
-			lowerCaseLetters[keycode - 'a'] = isPressed;
+			lowerCaseLetters[static_cast<std::size_t>(keycode - 'a')] = isPressed;
 		}
 	}
 }
@@ -123,7 +123,7 @@ void BoxEvents::fillUpperCaseKeys(SDL_Keycode keycode, bool isPressed, bool isCa
 	{
 		if( keycode >= 'a' && keycode <= 'z' )
 		{
-			upperCaseLetters[keycode - 'a'] = isPressed;
+			upperCaseLetters[static_cast<std::size_t>(keycode - 'a')] = isPressed;
 		}
 	}
 }	
@@ -161,25 +161,25 @@ void BoxEvents::setSpecificKeyToFalse(unsigned keyEnum)
 bool BoxEvents::getLowerCaseState(char letter) const
 {
 	assert( letter >= 'a' && letter <= 'z' );
-	return lowerCaseLetters[letter - 'a'];
+	return lowerCaseLetters[static_cast<std::size_t>(letter - 'a')];
 }
 
 void BoxEvents::setLowerCaseStateToFalse(char letter)
 {
 	assert( letter >= 'a' && letter <= 'z' );
-	lowerCaseLetters[letter - 'a'] = false;
+	lowerCaseLetters[static_cast<std::size_t>(letter - 'a')] = false;
 }
 	
 bool BoxEvents::getUpperCaseState(char letter) const
 {
 	assert( letter >= 'A' && letter <= 'Z' );
-	return upperCaseLetters[letter - 'A'];
+	return upperCaseLetters[static_cast<std::size_t>(letter - 'A')];
 }
 
 void BoxEvents::setUpperCaseStateToFalse(char letter)
 {
 	assert( letter >= 'A' && letter <= 'Z' );
-	upperCaseLetters[letter - 'A'] = false;
+	upperCaseLetters[static_cast<std::size_t>(letter - 'A')] = false;
 }
 bool BoxEvents::getMouseLeftButtonState() const
 {

@@ -51,7 +51,7 @@ void ZoneChoiceThings::displayBonusesVignettesHelpText(Essentials& essentials, c
 	
 	if( editBoxIndex >= 0 )
 	{
-		helpTexts.drawBonusesVignetteText(essentials.rndWnd, editBoxIndex);
+		helpTexts.drawBonusesVignetteText(essentials.rndWnd, static_cast<std::size_t>(editBoxIndex) );
 	}
 }
 

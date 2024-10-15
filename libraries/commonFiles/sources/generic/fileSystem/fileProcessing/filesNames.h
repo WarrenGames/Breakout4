@@ -68,7 +68,9 @@ namespace file{
 	constexpr char OnePlayerShopRaceMenu[] = "1player_shopRaceMainMenu.txt";
 
 	constexpr char OnePlayerSkillLevel[] = "1player_skillLevels.txt";
-
+	
+	constexpr char OnePlayerRimsPointsAdd[] = "1player_rimsBonus.txt";
+	
 	constexpr char OptionMenuAudioPanel[] = "optionMenu_audioPanel.txt";
 
 	constexpr char OptionMenuGraphicsPanel[] = "optionMenu_graphicsPanel.txt";

@@ -2,7 +2,7 @@
 #include "logging/logFile.h"
 #include "SDL_mixer.h"
 
-constexpr unsigned MixerDefaultChannelsNumber = 22;
+constexpr int MixerDefaultChannelsNumber = 22;
 
 sdl2::MixerModule::MixerModule(LogFile& log):
 	isMixerInitialized{true}
@@ -10,7 +10,7 @@ sdl2::MixerModule::MixerModule(LogFile& log):
 	initSdl2Mixer(log, MixerDefaultChannelsNumber);
 }
 
-sdl2::MixerModule::MixerModule(LogFile& log, unsigned customChannelsNumber):
+sdl2::MixerModule::MixerModule(LogFile& log, int customChannelsNumber):
 	isMixerInitialized{true}
 {
 	initSdl2Mixer(log, customChannelsNumber);
@@ -34,7 +34,7 @@ bool sdl2::MixerModule::wasLoadingPerfect() const
 	return isMixerInitialized;
 }
 
-void sdl2::MixerModule::initSdl2Mixer(LogFile& log, unsigned customChannelsNumber)
+void sdl2::MixerModule::initSdl2Mixer(LogFile& log, int customChannelsNumber)
 {
 	/*	Mix_OpenAudio(sound frequency here: 44100 Hertz, 
 						16 bits sample type represented by 'MIX_FEAULT_FORMAT' define,

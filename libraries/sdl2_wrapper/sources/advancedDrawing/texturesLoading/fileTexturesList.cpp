@@ -1,6 +1,7 @@
 #include "advancedDrawing/texturesLoading/fileTexturesList.h"
 #include "logging/logsStruct.h"
 #include <cassert>
+#include <fstream>
 
 TexturesFilesList::TexturesFilesList():
 	isLoadingPerfect{ true }

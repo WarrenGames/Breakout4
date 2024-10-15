@@ -5,7 +5,7 @@
 #include "widgets/editBoxes/subObjects/editBoxes_consts.h"
 #include <sstream>
 
-SintEditBox::SintEditBox(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const SDL_Rect& boxSize, unsigned int fontSize, int& refValue):
+SintEditBox::SintEditBox(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const SDL_Rect& boxSize, int fontSize, int& refValue):
 	events{},
 	boxRect{logs, rndWnd, boxSize},
 	cursor{logs, rndWnd, boxSize},

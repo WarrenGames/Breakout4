@@ -28,8 +28,8 @@ private:
 	BagBonusesInterface bagBonusesInterface;
 	GameSaveSlots savesSlots;
 	AppLogFiles& logs;
-	const TextsBlocks headersTexts;
-	const fs::path gameSavePath;
+	TextsBlocks headersTexts;
+	fs::path gameSavePath;
 
 public:
 	explicit MyFrame(AppStartData& appStartData);

@@ -23,7 +23,7 @@ private:
 	bool hasStringChanged;
 
 public:
-	explicit UintEditBox(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const SDL_Rect& boxSize, unsigned int fontSize, unsigned& refValue);
+	explicit UintEditBox(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const SDL_Rect& boxSize, int fontSize, unsigned& refValue);
 	~UintEditBox() = default;
 	
 	UintEditBox( const UintEditBox& ) = delete;

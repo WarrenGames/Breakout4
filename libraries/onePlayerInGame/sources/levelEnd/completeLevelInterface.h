@@ -21,8 +21,8 @@ enum{ 	LevelCompleteTitle,
 class LevelCompleteGUI
 {
 private:
-	const sdl2::Font fancyFont;
-	const TextsBlocks languagesTexts;
+	sdl2::Font fancyFont;
+	TextsBlocks languagesTexts;
 	std::vector< TextureCombo > texts;
 
 public:

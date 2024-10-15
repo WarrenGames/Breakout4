@@ -14,12 +14,12 @@ namespace duels{
 
 struct HalloweenPack
 {
-	const sdl2::Font arial;
+	sdl2::Font arial;
 	duels::HalloweenFactory factory;
 	duels::HalloweenArea area;
 	duels::GlobalObject zonesCommon;
-	const TextureCombo nightWallpaper;
-	const TextureCombo daytimeWallpaper;
+	TextureCombo nightWallpaper;
+	TextureCombo daytimeWallpaper;
 
 	HalloweenPack(Essentials& essentials, const duels::LevelOptions& levelOptions);
 	~HalloweenPack() = default;

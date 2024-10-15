@@ -22,6 +22,10 @@ add_library(
 	${HEADERS} 
 )
 
+source_group( TREE ${CMAKE_CURRENT_SOURCE_DIR}
+	FILES ${HEADERS} ${SOURCES}
+)
+
 target_link_libraries(	
 	${PROJECT_NAME} 
 )

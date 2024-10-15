@@ -20,10 +20,10 @@ namespace onePlGame{
 		
 		struct Interface
 		{
-			const sdl2::Font fancyFont;
-			const TextsBlocks languageTexts;
-			const TextureCombo screenBackground;
-			const TextureCombo screenTitle;
+			sdl2::Font fancyFont;
+			TextsBlocks languageTexts;
+			TextureCombo screenBackground;
+			TextureCombo screenTitle;
 			std::vector< TextButton > skillButtons;
 			TextButton goBackButton;
 			

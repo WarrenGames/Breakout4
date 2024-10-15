@@ -16,7 +16,7 @@ private:
 			
 public:
 	Font() = default;
-	Font(LogFile& log, const fs::path& fontPath, unsigned fontSize);
+	Font(LogFile& log, const fs::path& fontPath, int fontSize);
 	~Font() = default;
 	Font( const Font& ) = delete;
 	Font& operator= ( const Font& ) = delete;
@@ -26,7 +26,7 @@ public:
 	operator bool () const;
 	
 	TTF_Font* get() const;
-	void reset(LogFile& log, const fs::path& fontPath, unsigned fontSize);
+	void reset(LogFile& log, const fs::path& fontPath, int fontSize);
 	void outputAnErrorMessage(LogFile& log, const fs::path& fontPath) const;
 	void reset();
 };

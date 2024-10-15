@@ -10,7 +10,7 @@ class AccurateTimeDelay;
 class SDL_VersionDisplay;
 
 namespace logoDisplay{
-	void mainContext(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const fs::path& logoDisplayStatusFile, const fs::path& languageFilePath, unsigned fontSize, int squareSize);
+	void mainContext(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const fs::path& logoDisplayStatusFile, const fs::path& languageFilePath, int fontSize, int squareSize);
 	
 	void loopThings(sdl2::RendererWindow& rndWnd, bool& quitLogoDisplay, const TextureCombo& sdlLogo, const SDL_VersionDisplay& versionDisplay, const AccurateTimeDelay& displayDelay);
 	

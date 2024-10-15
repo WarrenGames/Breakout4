@@ -106,7 +106,7 @@ unsigned duels::LevelOptions::getExpectedSoundsNumber() const
 	}
 }
 
-unsigned duels::LevelOptions::getExpectedGroupsTagNumber() const
+int duels::LevelOptions::getExpectedGroupsTagNumber() const
 {
-	return duels::GroupTagMax;
+	return static_cast<int>( duels::GroupTagMax );
 }

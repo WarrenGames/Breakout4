@@ -3,7 +3,7 @@
 #include "logging/logsStruct.h"
 
 GameSoundSystem::GameSoundSystem(AppLogFiles& logs, const PrefPathFinder& prefPath, const fs::path& soundsFileList, const fs::path& groupTagCfg, 
-									unsigned expectedSoundsNumber, unsigned expectedGroupTagsNumber):
+									unsigned expectedSoundsNumber, int expectedGroupTagsNumber):
 	soundSystemFilesPaths{ prefPath, soundsFileList, groupTagCfg },
 	soundSystem{ logs, soundSystemFilesPaths.getPaths(), expectedSoundsNumber, expectedGroupTagsNumber}
 {

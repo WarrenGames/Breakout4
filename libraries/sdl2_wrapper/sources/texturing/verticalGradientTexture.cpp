@@ -14,7 +14,7 @@ sdl2::VerticalGradient::VerticalGradient(AppLogFiles& logs, sdl2::RendererWindow
 	fromBottomToTopGrad{fromBottom}
 {
 	assert( valueMax != 0 );
-	setNewCounterValue(startValue);
+	setNewCounterValue(static_cast<int>(startValue) );
 }
 
 sdl2::VerticalGradient::operator bool () const
@@ -37,12 +37,12 @@ void sdl2::VerticalGradient::draw(sdl2::RendererWindow& rndWnd) const
 
 void sdl2::VerticalGradient::setNewCounterValue(int newValue)
 {
-	assert( newValue >= 0 && newValue <= counterMaxValue );
+	assert( static_cast<int>(newValue) <= counterMaxValue );
 	
 	if( fromBottomToTopGrad )
-		setWithBottomAsOrigin(newValue);
+		setWithBottomAsOrigin(static_cast<int>(newValue) );
 	else
-		setWithTopAsOrigin(newValue);
+		setWithTopAsOrigin(static_cast<int>(newValue) );
 }
 
 void sdl2::VerticalGradient::setWithBottomAsOrigin(int newValue)

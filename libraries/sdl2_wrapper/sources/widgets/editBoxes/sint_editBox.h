@@ -25,7 +25,7 @@ private:
 	bool hasStringChanged;
 
 public:
-	explicit SintEditBox(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const SDL_Rect& boxSize, unsigned int fontSize, int& refValue);
+	explicit SintEditBox(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const SDL_Rect& boxSize, int fontSize, int& refValue);
 	~SintEditBox() = default;
 	
 	SintEditBox( const SintEditBox& ) = delete;

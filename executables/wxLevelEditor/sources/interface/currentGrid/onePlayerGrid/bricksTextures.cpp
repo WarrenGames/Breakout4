@@ -3,6 +3,7 @@
 #include "customTypes/positionTypes.h"
 #include "consts/onePlayerGridConsts.h"
 #include "consts/constexprScreen.h"
+#include "fileSystem/fileSystem.h"
 #include "wx/dc.h"
 #include "wx/textctrl.h"
 #include <fstream>
@@ -53,10 +54,11 @@ void OnePBricksTextures::drawSingleBrick(wxDC& drawContext, const BrickData& bri
 	}
 }
 
-std::size_t OnePBricksTextures::getCategorySize(std::size_t category) const
+std::size_t OnePBricksTextures::getCategorySize(const BrickData& brickData) const
 {
-	assert( category < bricksTextures.size() );
-	return bricksTextures[category].size();
+	assert( brickData.index > 0 );
+	assert( brickData.index <= bricksTextures.size() );
+	return bricksTextures[brickData.index - 1].size();
 }
 
 std::size_t OnePBricksTextures::getSize() const
@@ -88,7 +90,13 @@ void OnePBricksTextures::loadTexturesPack(const std::string& texturesEnumFilePat
 		std::string fileLine;
 		while( std::getline( texturesEnumFile, fileLine ) )
 		{
-			texturePack.emplace_back( wxImage{ fileLine.c_str(), wxBITMAP_TYPE_PNG } );
+			if( fs::exists( fileLine ) )
+			{
+				texturePack.emplace_back( wxImage{ fileLine.c_str(), wxBITMAP_TYPE_PNG } );
+			}
+			else{
+				logWindow << "Error: that texture file doesn't exists.\n";
+			}
 		}
 	}
 	else{

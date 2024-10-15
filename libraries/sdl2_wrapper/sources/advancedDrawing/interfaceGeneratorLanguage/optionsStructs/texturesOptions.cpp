@@ -8,7 +8,7 @@ igl::texture::TextOptions::TextOptions():
 	
 }
 
-igl::texture::Description::Description(const fs::path& toOpenFile, unsigned squareSize_):
+igl::texture::Description::Description(const fs::path& toOpenFile, int squareSize_):
 	scriptFilePath{toOpenFile},
 	fileLineNumber{1},
 	textureType{igl::texture::TextureIsMax},

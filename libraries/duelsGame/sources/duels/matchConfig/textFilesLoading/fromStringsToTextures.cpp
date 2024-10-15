@@ -9,7 +9,7 @@
 #include "consts/sdlColors.h"
 #include "consts/fontsConsts.h"
 
-void createZoneChoiceTextsTextures(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const TextsBlocks& texts, std::vector< TextureCombo >& textures, unsigned fontSize)
+void createZoneChoiceTextsTextures(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const TextsBlocks& texts, std::vector< TextureCombo >& textures, int fontSize)
 {
 	const sdl2::Font arialFont{logs.error, ArialFontPath, fontSize};
 	

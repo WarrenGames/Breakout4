@@ -7,9 +7,9 @@
 
 struct AppStartData
 {
-	const wxPrefPathFinder prefPath;
+	wxPrefPathFinder prefPath;
 	AppLogFiles logs;
-	const fs::path savesEditorDataPathStr;
+	fs::path savesEditorDataPathStr;
 	TextsBlocks headersTexts;
 	TextsBlocks gameObjectsTexts;
 	TextsBlocks bagBonusesTexts;

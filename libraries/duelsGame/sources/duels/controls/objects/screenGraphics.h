@@ -14,8 +14,8 @@ class TextsBlocks;
 class DuelsInpCfgGraphics
 {
 private:
-	const TextureCombo screenBackground;
-	const TextureCombo screenTitle;
+	TextureCombo screenBackground;
+	TextureCombo screenTitle;
 	TextureCombo deviceText;
 	std::vector< TextureCombo > inputTexts;
 

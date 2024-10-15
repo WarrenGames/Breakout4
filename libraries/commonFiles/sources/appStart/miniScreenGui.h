@@ -12,9 +12,9 @@ struct AppLogFiles;
 class MiniScreen
 {
 private:
-	const sdl2::Font fancyFont;
+	sdl2::Font fancyFont;
 	std::vector< TextureCombo > textsTextures;
-	const TextureCombo bricksBackground;
+	TextureCombo bricksBackground;
 	
 public:
 	explicit MiniScreen(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const TextsBlocks& texts, int squareSize, int screenWidth, int screenHeight);

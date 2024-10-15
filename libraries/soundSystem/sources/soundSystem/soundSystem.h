@@ -12,12 +12,12 @@ struct AppLogFiles;
 
 struct SoundSystem
 {
-	const SoundVolumeLoader soundsVolume;
+	SoundVolumeLoader soundsVolume;
 	SoundsListLoader soundsListLoader;
-	const SoundPlayer soundPlayer;
-	const SoundChannelsSystem soundChannels;
+	SoundPlayer soundPlayer;
+	SoundChannelsSystem soundChannels;
 	
-	explicit SoundSystem(AppLogFiles& logs, const std::vector< fs::path >& pathsList, unsigned expectedSoundsNumber, unsigned expectedGroupTagsNumber);
+	explicit SoundSystem(AppLogFiles& logs, const std::vector< fs::path >& pathsList, unsigned expectedSoundsNumber, int expectedGroupTagsNumber);
 	~SoundSystem() = default;
 	SoundSystem( const SoundSystem& ) = delete;
 	SoundSystem& operator= ( const SoundSystem& ) = delete;

@@ -12,7 +12,7 @@ private:
 
 public:
 	explicit MixerModule(LogFile& log);
-	explicit MixerModule(LogFile& log, unsigned customChannelsNumber);
+	explicit MixerModule(LogFile& log, int customChannelsNumber);
 	~MixerModule();
 	MixerModule( const MixerModule& ) = delete;
 	MixerModule& operator= ( const MixerModule& ) = delete;
@@ -22,7 +22,7 @@ public:
 	operator bool() const;
 	bool wasLoadingPerfect() const;
 	
-	void initSdl2Mixer(LogFile& log, unsigned customChannelsNumber);
+	void initSdl2Mixer(LogFile& log, int customChannelsNumber);
 };
 
 }

@@ -16,14 +16,14 @@ enum{ SpinZoneSpecific, SpinBonuses, SpinOtherOptions, SpinMax };
 
 struct ZoneChoiceGraphics
 {
-	const TextureCombo grad;
-	const duels::BonusVignettes vignettes;
+	TextureCombo grad;
+	duels::BonusVignettes vignettes;
 	SpinAnim spin;
-	const ZonesPanels panelsTextures;
-	const std::vector< SDL_Color > colors;
-	const std::vector< std::string > playersStrings;
+	ZonesPanels panelsTextures;
+	std::vector< SDL_Color > colors;
+	std::vector< std::string > playersStrings;
 	std::vector< TextureCombo > scoresTexts;
-	const std::vector< Offset > spinsCoordinates;
+	std::vector< Offset > spinsCoordinates;
 	bool canChangeScoreGraphics;
 
 

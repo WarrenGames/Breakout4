@@ -19,9 +19,9 @@ struct HalloweenSpecElements
 	std::vector< TextureCombo > explanationsAboutPumpkins;
 	BoolEditBox displayWallpaperBooleanBox;
 	BoolEditBox displayDaytimeWallpaper;
-	const TextureCombo wallpaperDisplayInfo;
-	const TextureCombo wallpaperThemeIsDaytime;
-	const TextureCombo title;
+	TextureCombo wallpaperDisplayInfo;
+	TextureCombo wallpaperThemeIsDaytime;
+	TextureCombo title;
 	TextButton quitBtn;
 	
 	HalloweenSpecElements(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const TextsBlocks& langTexts, const sdl2::Font& arial, HalloweenConfig& halloweenConfig);

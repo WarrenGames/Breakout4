@@ -12,7 +12,7 @@ class SteamPipe
 {	
 private:
 	bool isLoadingPerfect;
-	const TextureCombo steamPipe;
+	TextureCombo steamPipe;
 	std::vector< TextureCombo > steamAnim;
 	AccurateTimeDelay steamAnimDelay;
 	std::vector< std::unique_ptr<SteamSample> > steamSamples;

@@ -16,7 +16,6 @@ private:
 	unsigned direction;
 	unsigned rumbleCount;
 	unsigned state;
-	int length;
 
 public:
 	explicit StalactiteData(const Offset& position);

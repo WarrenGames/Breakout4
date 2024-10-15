@@ -110,7 +110,7 @@ void SoundConfig::readDataFile(Essentials& essentials)
 {
 	if( std::ifstream soundFile{ path::getConfigDirFile(essentials.prefPath, file::SoundConfigFile) } )
 	{
-		unsigned soundVolume{0};
+		int soundVolume{0};
 		if( soundFile >> isSoundActive >> soundVolume )
 		{
 			volBar.setVolume(soundVolume);

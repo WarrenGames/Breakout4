@@ -23,7 +23,7 @@ public:
 	
 	bool wasLoadingPerfect() const;
 	void drawSingleBrick(wxDC& drawContext, const BrickData& brickData, const Offset& position) const;
-	std::size_t getCategorySize(std::size_t category) const;
+	std::size_t getCategorySize(const BrickData& brickData) const;
 	std::size_t getSize() const;
 	
 private:

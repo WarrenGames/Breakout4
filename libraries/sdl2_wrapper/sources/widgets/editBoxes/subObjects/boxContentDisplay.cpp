@@ -4,7 +4,7 @@
 #include "texturing/texturePosition.h"
 #include "widgets/editBoxes/subObjects/editBoxes_consts.h"
 
-BoxContentDisplay::BoxContentDisplay(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, unsigned int fontSize, const std::string& valueInText):
+BoxContentDisplay::BoxContentDisplay(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, int fontSize, const std::string& valueInText):
 	arialFont{logs.error, BoxesArialFontPath, fontSize},
 	currentValue{ logs, rndWnd, arialFont, valueInText, BoxesEditBoxBlack, TexturePosition{} }
 {
