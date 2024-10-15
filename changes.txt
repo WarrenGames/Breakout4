@@ -1,4 +1,5 @@
 2024-10-15 :
+	- Activating rims in one player game now triggers scores bonuses (400 then 800 and 1600 pts).
 	- Several bug in breakout4_levelEditor have been fixed (the toolbar buttons in particular when browsing game bricks). 
 	- Some structs or class declared consts (with a move constructor or a move assignation) don't have the const keyword 
 		anymore (this might cause several warning in the future in case of move and is quite useless excepted if you are a const 
