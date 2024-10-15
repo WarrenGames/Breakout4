@@ -9,8 +9,8 @@ struct MetalStringsConfig
 {
 	unsigned barrierInWayDuration;
 	unsigned barrierActivatorType;
-	const fs::path soundsListFilePath;
-	const fs::path channelsConfigFilePath;
+	fs::path soundsListFilePath;
+	fs::path channelsConfigFilePath;
 	
 	MetalStringsConfig();
 	~MetalStringsConfig() = default;

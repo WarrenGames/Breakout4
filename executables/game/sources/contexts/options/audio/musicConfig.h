@@ -17,10 +17,10 @@ class MusicConfig
 private:
 	bool isLoadingPerfect;
 	bool isMusicActive;
-	const sdl2::Mix_MusicPtr musicExample;
-	const TextureCombo musicTxt;
-	const TextureCombo enabled;
-	const TextureCombo disabled;
+	sdl2::Mix_MusicPtr musicExample;
+	TextureCombo musicTxt;
+	TextureCombo enabled;
+	TextureCombo disabled;
 	VolumeBar volBar;
 	TextButton playMusic;
 	TextButton switchMusicBool;

@@ -11,7 +11,8 @@
 
 namespace sdl2{ class RendererWindow; }
 class SoundPlayer;
-class OnePlayerRims;
+class OnePlayerRimsSystem;
+namespace demos{ template<typename T>class Stack; struct SoundStackData; }
 
 struct BallThings
 {
@@ -42,19 +43,23 @@ struct BallThings
 	void moveMainBall();
 	void setGridRelativePosition();
 	
-	void handleBallWithRacketCollision(const SDL_Rect& racketRect, unsigned& glueLevel, const SoundPlayer& soundPlayer);
+	void handleBallWithRacketCollision(const SDL_Rect& racketRect, unsigned& glueLevel, const SoundPlayer& soundPlayer, demos::Stack< demos::SoundStackData >& soundsStack, 
+												unsigned demoKind);
 	
 	void resetBetweenRacketAndBallCollisionPossibility(const SDL_Rect& racketRect);
 	void setEnlargedRacketRect(SDL_Rect& enlargedRacketRect, int interval);
 	bool isThereCollisionBetweenRects(const SDL_Rect& racketRect/* can be enlarged one for reseting collide*/, const SDL_Rect& ballRect);
 	
-	void detectCollisionBetweenBallAndRacket(const SDL_Rect& racketRect, unsigned& glueLevel, const SoundPlayer& soundPlayer);
-	void determineBallBounceWithRacket(const SDL_Rect& racketRect, const SoundPlayer& soundPlayer);
-	void bounceMakeBallGoesUpward(const SDL_Rect& racketRect, const SoundPlayer& soundPlayer);
+	void detectCollisionBetweenBallAndRacket(const SDL_Rect& racketRect, unsigned& glueLevel, const SoundPlayer& soundPlayer, demos::Stack< demos::SoundStackData >& soundsStack, 
+												unsigned demoKind);
+	void determineBallBounceWithRacket(const SDL_Rect& racketRect, const SoundPlayer& soundPlayer, demos::Stack< demos::SoundStackData >& soundsStack, unsigned demoKind);
+	void bounceMakeBallGoesUpward(const SDL_Rect& racketRect, const SoundPlayer& soundPlayer, demos::Stack< demos::SoundStackData >& soundsStack, unsigned demoKind);
 
-	void testCollisionWithRims(const OnePlayerRims& rims, const SoundPlayer& soundPlayer);
+	void testCollisionWithRims(const OnePlayerRimsSystem& rims, const SoundPlayer& soundPlayer);
 
 	SpriteSize getTexSize() const;
 };
+
+void stackSoundOfBallWithRacketCollision(demos::Stack< demos::SoundStackData >& soundsStack, unsigned demoKind);
 
 #endif //BALLS_THINGS_H

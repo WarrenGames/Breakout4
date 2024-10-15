@@ -1,8 +1,19 @@
-2024-09-27 : - Bug fix: the first level of the shop campaign was not the good one.
-	-The interface is more user friendly, with some more wallpapers instead of black screens.
-
-2024-09-04 : - A bug in the 'boxEvents.h' and 'boxEvents.cpp' has been fixed (the size of alpha characters was set with "'z' - 'a'" 
-	which sets the size to 25 whereas the good value must be 26 ).
+2024-10-15 :
+	- Several bug in breakout4_levelEditor have been fixed (the toolbar buttons in particular when browsing game bricks). 
+	- Some structs or class declared consts (with a move constructor or a move assignation) don't have the const keyword 
+		anymore (this might cause several warning in the future in case of move and is quite useless excepted if you are a const 
+		correctness addict ;-) ). 
+	- The demo recording feature, records the sound when the ball bounce against the racket, so that playing a demo restitute the 
+	sound while playing it. 
+	- When recording a demo the brick layout at level starting is recorded inside the demo file, so when the grid file has been 
+		deleted in the past, that doesn't matter anymore.
+	- The following lines have been added in all sub 'CMakeLists.txt' files to keep directories tree structure in generated project files 
+		(Visual Studio solution files for example, useless in Makefile projects):
+		----CMakeLists.txt----
+		source_group( TREE ${CMAKE_CURRENT_SOURCE_DIR}
+		FILES ${HEADERS} ${SOURCES}
+		)
+		----------------------
 
 2024-08-30 : The main CMakeLists.txt file has been modified. There was a bug with the executables names 'breakout4_game', 
 	'breakout4_levelEditor' and breakout4_savesEditor' which led to an error when invoking cmake.

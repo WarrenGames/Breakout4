@@ -17,7 +17,7 @@ enum{ PointsPlayInZone, SecondsBeforeNewCoin, MaxCoinInZone, SecondsBeforeNewBal
 class OtherOptions
 {
 private:
-	const TextsBlocks langTexts;
+	TextsBlocks langTexts;
 	std::vector< TextureCombo > texts;
 	std::vector< UintEditBox > editBoxes;
 	

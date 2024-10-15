@@ -13,11 +13,11 @@ enum{ PausedGameInfos, PausedGameGoBack, PausedGameQuitButton, PausedGameMax };
 class PausedGameGUI
 {
 private:
-	const sdl2::Font fancyFont;
-	const TextsBlocks languagesTexts;
-	const TextureCombo pauseWindow;
-	const TextureCombo pauseInfos;
-	const TextureCombo pressEscapeGoBack;
+	sdl2::Font fancyFont;
+	TextsBlocks languagesTexts;
+	TextureCombo pauseWindow;
+	TextureCombo pauseInfos;
+	TextureCombo pressEscapeGoBack;
 	TextButton quitGame;
 
 public:

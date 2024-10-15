@@ -1,10 +1,13 @@
 #include "levelComponents/balls/ballsThings.h"
 #include "levelComponents/freeFunctions/ballWithGridCollisions.h"
-#include "levelComponents/rims/playerRims.h"
+#include "levelComponents/rims/rimsGlobal.h"
 #include "rectCollisions/objMoveWithRectCollisions.h"
 #include "soundSystem/soundsPlayer.h"
 #include "crossLevel/playerData.h"
 #include "levelComponents/fallingBonuses/fallingBonuses.h"
+#include "demos/sounds/soundsStackData.h"
+#include "demos/templates/demoStack.h"
+#include "demos/consts/demosConsts.h"
 #include "consts/constexprScreen.h"
 #include "consts/onePlayerLevelConsts.h"
 #include "consts/onePlayerSounds.h"
@@ -58,12 +61,13 @@ void BallThings::setGridRelativePosition()
 	gridRelPos.y = move.get_y_position() / SQR_SIZE;
 }
 
-void BallThings::handleBallWithRacketCollision(const SDL_Rect& racketRect, unsigned& glueLevel, const SoundPlayer& soundPlayer)
+void BallThings::handleBallWithRacketCollision(const SDL_Rect& racketRect, unsigned& glueLevel, const SoundPlayer& soundPlayer, demos::Stack< demos::SoundStackData >& soundsStack, 
+												unsigned demoKind)
 {
 	if( isMainBallActive )
 	{
 		resetBetweenRacketAndBallCollisionPossibility(racketRect);
-		detectCollisionBetweenBallAndRacket(racketRect, glueLevel, soundPlayer);
+		detectCollisionBetweenBallAndRacket(racketRect, glueLevel, soundPlayer, soundsStack, demoKind);
 	}
 }
 
@@ -97,7 +101,8 @@ bool BallThings::isThereCollisionBetweenRects(const SDL_Rect& racketRect, const 
 			&& ballRect.y 				< racketRect.y + racketRect.h;
 }
 
-void BallThings::detectCollisionBetweenBallAndRacket(const SDL_Rect& racketRect, unsigned& glueLevel, const SoundPlayer& soundPlayer)
+void BallThings::detectCollisionBetweenBallAndRacket(const SDL_Rect& racketRect, unsigned& glueLevel, const SoundPlayer& soundPlayer, 
+														demos::Stack< demos::SoundStackData >& soundsStack, unsigned demoKind)
 {
 	if( canTestRacketCollideBox 
 		&& isThereCollisionBetweenRects(racketRect, 
@@ -108,7 +113,7 @@ void BallThings::detectCollisionBetweenBallAndRacket(const SDL_Rect& racketRect,
 	{
 		if( glueLevel == 0 )
 		{
-			determineBallBounceWithRacket(racketRect, soundPlayer);
+			determineBallBounceWithRacket(racketRect, soundPlayer, soundsStack, demoKind);
 			canTestRacketCollideBox = false;
 		}
 		else{
@@ -118,39 +123,43 @@ void BallThings::detectCollisionBetweenBallAndRacket(const SDL_Rect& racketRect,
 	}
 }
 
-void BallThings::determineBallBounceWithRacket(const SDL_Rect& racketRect, const SoundPlayer& soundPlayer)
+void BallThings::determineBallBounceWithRacket(const SDL_Rect& racketRect, const SoundPlayer& soundPlayer, demos::Stack< demos::SoundStackData >& soundsStack, unsigned demoKind)
 {
 	if( move.get_y_position() + texture.sprite.height() / 2 < racketRect.y + racketRect.h )
 	{
-		bounceMakeBallGoesUpward(racketRect, soundPlayer);
+		bounceMakeBallGoesUpward(racketRect, soundPlayer, soundsStack, demoKind);
 	}
 	else{
 		soundPlayer.playSoundOnGroup(onePlGame::SoundRacketWithBallCollision, onePlGame::GroupTagRacketWithBallCollision);
+		stackSoundOfBallWithRacketCollision(soundsStack, demoKind);
 		move.reverse_x_vector();
 		move.adjust_x_speed();
 	}
 }
 
-void BallThings::bounceMakeBallGoesUpward(const SDL_Rect& racketRect, const SoundPlayer& soundPlayer)
+void BallThings::bounceMakeBallGoesUpward(const SDL_Rect& racketRect, const SoundPlayer& soundPlayer, demos::Stack< demos::SoundStackData >& soundsStack, unsigned demoKind)
 {
 	if( move.get_x_position() + texture.sprite.width() / 2 < racketRect.x + RacketCollideCorner )
 	{
 		soundPlayer.playSoundOnGroup(onePlGame::SoundRacketWithBallCollision, onePlGame::GroupTagRacketWithBallCollision);
+		stackSoundOfBallWithRacketCollision(soundsStack, demoKind);
 		giveObjectNewDirection(move, Offset{-1, -1} );
 	}
 	else if( move.get_x_position() - texture.sprite.width() / 2 >= racketRect.x + racketRect.w - RacketCollideCorner )
 	{
 		soundPlayer.playSoundOnGroup(onePlGame::SoundRacketWithBallCollision, onePlGame::GroupTagRacketWithBallCollision);
+		stackSoundOfBallWithRacketCollision(soundsStack, demoKind);
 		giveObjectNewDirection(move, Offset{1, -1} );
 	}
 	else{
 		soundPlayer.playSoundOnGroup(onePlGame::SoundRacketWithBallCollision, onePlGame::GroupTagRacketWithBallCollision);
+		stackSoundOfBallWithRacketCollision(soundsStack, demoKind);
 		move.reverse_y_vector();
 		move.adjust_y_speed();
 	}
 }
 
-void BallThings::testCollisionWithRims(const OnePlayerRims& rims, const SoundPlayer& soundPlayer)
+void BallThings::testCollisionWithRims(const OnePlayerRimsSystem& rims, const SoundPlayer& soundPlayer)
 {	
 	if( canTestRimCollisions )
 	{
@@ -166,4 +175,13 @@ void BallThings::testCollisionWithRims(const OnePlayerRims& rims, const SoundPla
 SpriteSize BallThings::getTexSize() const
 {
 	return SpriteSize{ texture.sprite.width(), texture.sprite.height() };
+}
+
+void stackSoundOfBallWithRacketCollision(demos::Stack< demos::SoundStackData >& soundsStack, unsigned demoKind)
+{
+	if( demoKind == demos::GameIsRecording )
+	{
+		soundsStack.emplaceElement(demos::SoundStackData{ soundsStack.getCurrentElapsedMicroSecondsTime(), onePlGame::SoundRacketWithBallCollision, 
+									onePlGame::GroupTagRacketWithBallCollision } );
+	}
 }

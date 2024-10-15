@@ -18,11 +18,11 @@ class ScoresInterface
 private:
 	bool isLoadingPerfect;
 	unsigned chosenCampaign;
-	const BestScoresData stdRaceScoresData;
-	const BestScoresData shopRaceScoresData;
-	const TextureCombo gradientWallpaper;
-	const TextsBlocks languageTexts;
-	const sdl2::Font fancyFont;
+	BestScoresData stdRaceScoresData;
+	BestScoresData shopRaceScoresData;
+	TextureCombo gradientWallpaper;
+	TextsBlocks languageTexts;
+	sdl2::Font fancyFont;
 	std::vector< TextureCombo > titles;
 	std::vector< TextureCombo > skillsTexts;
 	std::vector< std::vector< TextureCombo > > stdRaceScoresTexts;

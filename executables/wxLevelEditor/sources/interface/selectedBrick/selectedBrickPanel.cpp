@@ -42,7 +42,7 @@ void SelectedBrickPanel::previousCategory()
 
 void SelectedBrickPanel::nextCategory()
 {
-	if( selectedBrick.index + 2 < tex.getSize() )
+	if( selectedBrick.index < tex.getSize() )
 	{
 		selectedBrick.index++;
 		selectedBrick.property = 0;
@@ -63,8 +63,7 @@ void SelectedBrickPanel::previousSubCategory()
 void SelectedBrickPanel::nextSubCategory()
 {
 	assert( selectedBrick.index < bricks::index::Max );
-	//if( selectedBrick.property + 1 < propertiesMax[selectedBrick.index] )
-	if( selectedBrick.property + 1 < tex.getCategorySize(selectedBrick.index) )
+	if( selectedBrick.property + 1 < tex.getCategorySize(selectedBrick) )
 	{
 		selectedBrick.property++;
 		Refresh();

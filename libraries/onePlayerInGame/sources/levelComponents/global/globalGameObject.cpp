@@ -36,7 +36,6 @@ LevelComponents::LevelComponents(Essentials& essentials, const PlayerData& playe
 	rims{essentials, playerData.rimsStartState},
 	fallingBonuses{essentials},
 	gameSoundSystem{ essentials.logs, essentials.prefPath, onePlGame::CommonSoundsFilePath, onePlGame::CommonChannelsFilePath, onePlGame::SoundMax, onePlGame::GroupTagMax },
-	//sounds{essentials, onePlGame::CommonSoundsFilePath, onePlGame::CommonChannelsFilePath},
 	soundsStack{ essentials.logs, demos::getVectorsDataSize(essentials.logs, essentials.prefPath, file::DemoSoundsEventsFile), playerData.demoKind, demos::SoundEventStr},
 	traceCross{essentials},
 	traceCrossPosition{ essentials.logs, demos::getVectorsDataSize(essentials.logs, essentials.prefPath, file::DemoTraceCrossPositionFile), playerData.demoKind, demos::TraceCrossPositionStr },
@@ -46,7 +45,10 @@ LevelComponents::LevelComponents(Essentials& essentials, const PlayerData& playe
 	explosionsSprites{ explosionsLoader },
 	playedTimeCounter{ essentials }
 {
-	loadMatrix(essentials.logs.error, playerData.getMatrixPath());
+	if( playerData.demoKind != demos::GameIsDemo )
+	{
+		loadMatrix(essentials.logs.error, playerData.getMatrixPath());
+	}
 	fallingBonuses.reserveGiftBricksData(grid);
 	if( false == ( 		ball 
 					&& grid.size() == GridWidth * GridHeight 
@@ -73,11 +75,11 @@ void LevelComponents::commonUpdate(Essentials& essentials, LevelInputs& levelInp
 	setBallPosition(playerData);
 	modifyBricksMatrixWithDemoStack(playerData);
 	ballWithGridCollision(playerData);
-	collideBallWithRacket();
+	collideBallWithRacket(playerData.demoKind);
 	infoBar.updateDataTexts(essentials, playerData, racket.data);
 	fallingBonuses.update();
 	fallingBonuses.detectCollisionWithRacket(playerData, racket, rims, infoBar, gameSoundSystem.soundSystem.soundPlayer);
-	rims.update();
+	rims.rimsUpdate();
 	quitGameIfLevelEnded(quitGame, playerData, levelInputs);
 	testBallCollisionWithRims();
 	updateTracingCrossPosition(levelInputs, playerData);
@@ -132,7 +134,8 @@ void LevelComponents::drawEverything(Essentials& essentials)
 	infoBar.drawEverything(essentials.rndWnd);
 	playedTimeCounter.drawElapsedTimeTexture(essentials);
 	fallingBonuses.drawBonuses(essentials);
-	rims.drawEverything(essentials);
+	rims.drawRims(essentials);
+	rims.drawPointsText(essentials);
 	traceCross.drawCross(essentials, ball.isMainBallActive);
 	drawCheatButton(essentials);
 }
@@ -345,9 +348,9 @@ void LevelComponents::attachMainBallToRacket(const SDL_Rect& racketRect)
 	ball.move.setPosition(Offset{racketRect.x + racketRect.w / 2, racketRect.y - ball.texture.sprite.height() / 2} );
 }
 
-void LevelComponents::collideBallWithRacket()
+void LevelComponents::collideBallWithRacket(unsigned demoKind)
 {
-	ball.handleBallWithRacketCollision(racket.rect, racket.glueLevel, gameSoundSystem.soundSystem.soundPlayer);
+	ball.handleBallWithRacketCollision(racket.rect, racket.glueLevel, gameSoundSystem.soundSystem.soundPlayer, soundsStack, demoKind);
 }
 
 void LevelComponents::quitGameIfLevelEnded(bool& quitGame, const PlayerData& playerData, LevelInputs& levelInputs) const
@@ -409,8 +412,11 @@ void LevelComponents::enlargeRims(PlayerData& playerData)
 	{
 		gameSoundSystem.soundSystem.soundPlayer.playSoundOnGroup(onePlGame::SoundEnlargeRacket, onePlGame::GroupTagBonusActivation);
 		rims.changeStatus(1);
+		rims.setDrawBonusTextFlag();
 		playerData.bonusesInBag[onePlGame::BonusEnlargeRim]--;
 		infoBar.setUpdateFlag(infoBarTexts::BonusCoinNumber);
+		playerData.score += rims.getReservedScoreIfAny();
+		infoBar.setUpdateFlag(infoBarTexts::PlayerScore);
 	}
 	else{
 		gameSoundSystem.soundSystem.soundPlayer.playSoundOnGroup(onePlGame::SoundCantUseBonus, onePlGame::GroupTagBonusActivation);

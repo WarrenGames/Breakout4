@@ -9,7 +9,7 @@ struct Essentials;
 
 struct PlayedTimeCounter
 {
-	const sdl2::Font arial;
+	sdl2::Font arial;
 	TextureCombo chronoText;
 	AccurateTimeDelay elapsedTimeSinceLevelStart;
 	AccurateTimeDelay textureRefreshDelay;

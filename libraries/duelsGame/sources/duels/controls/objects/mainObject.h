@@ -15,8 +15,8 @@ namespace duels{
 
 struct InputScreenGlobal
 {
-	const TextsBlocks languageTexts;
-	const sdl2::Font fancyFont;
+	TextsBlocks languageTexts;
+	sdl2::Font fancyFont;
 	duels::ReadyToUseInputs inputsData;
 	DuelsInpCfgGraphics screenGraphics;
 	PlayerInputButtons inputButtons;

@@ -8,8 +8,6 @@
 #include "consts/constPaths.h"
 #include "consts/sdlColors.h"
 
-constexpr SDL_Color SlotSquareColor = {215, 207, 174, 255};
-
 SlotGraphics::SlotGraphics(Essentials& essentials, int row, int line, const sdl2::TextureLoader& squareTexture):// std::size_t gameSaveNumber):
 	slotSquareSprite{squareTexture, slots::getXPosition(row), slots::getYPosition(line) },
 	deleteGameSaveButton{essentials.logs, essentials.rndWnd, "textures/gameGUI/buttons/binButton.png", slots::getXPosition(row) + SaveSlotSquareWidth, slots::getYPosition(line) }

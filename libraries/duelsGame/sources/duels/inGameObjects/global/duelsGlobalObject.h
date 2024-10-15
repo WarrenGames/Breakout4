@@ -27,7 +27,7 @@ private:
 	PlayersThings players;
 	IntRandomGenerator randomGen;
 	std::array< bool, duels::PlayerMax > zoneSpecificFlags;
-	const GameSoundSystem gameSoundSystem;
+	GameSoundSystem gameSoundSystem;
 	unsigned givenPoints;
 
 public:
@@ -47,7 +47,7 @@ public:
 	void resetScoresTextures(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const sdl2::Font& arial, duels::LevelOptions& levelOptions);
 	
 	bool canConsumeZoneSpecificFlag(unsigned playerNum);
-	void playZoneGreetingsSound(unsigned soundEnum, unsigned groupTag) const;
+	void playZoneGreetingsSound(unsigned soundEnum, int groupTag) const;
 	
 private:
 	void testCollisionsBetweenCoinsAndBalls();

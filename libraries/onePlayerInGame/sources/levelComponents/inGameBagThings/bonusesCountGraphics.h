@@ -14,7 +14,7 @@ class BonusesCountGraphics
 {
 private:
 	bool isLoadingPerfect;
-	const sdl2::Font fancyFont;
+	sdl2::Font fancyFont;
 	std::vector< TextureCombo > bonusesCount;
 	std::vector< bool > updateTexts;
 	

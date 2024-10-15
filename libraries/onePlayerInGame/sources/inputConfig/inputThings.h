@@ -22,13 +22,13 @@ struct InputThings
 	bool isLoadingPerfect;
 	CustomInputData inputData;
 	AccurateTimeDelay drawDelay;
-	const TextsBlocks languageTexts;
-	const sdl2::Font fancyFont;
+	TextsBlocks languageTexts;
+	sdl2::Font fancyFont;
 	std::vector< HighLightButton > keycodesInputsTexts;
 	std::vector< HighLightButton > joystickInputsTexts;
 	std::vector< HighLightButton > moveCross;
 	TextureCombo joystickName;
-	const onePlGame::StaticGraphics staticGraphics;
+	onePlGame::StaticGraphics staticGraphics;
 	SintEditBox axisThresholdBox;
 	HighLightButton joystickMenu;
 	

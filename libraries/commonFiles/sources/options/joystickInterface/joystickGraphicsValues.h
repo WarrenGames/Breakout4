@@ -32,9 +32,9 @@ private:
 	TextureCombo buttonPushed;
 	TextureCombo axisGradientOff;
 	TextureCombo axisGradientRed;
-	const TextureCombo buttonsText;
-	const TextureCombo hatsText;
-	const TextureCombo axisText;
+	TextureCombo buttonsText;
+	TextureCombo hatsText;
+	TextureCombo axisText;
 	JoyEventsInfos joyEventsInfos;
 	std::vector<TextureCombo> numbersTextures;
 

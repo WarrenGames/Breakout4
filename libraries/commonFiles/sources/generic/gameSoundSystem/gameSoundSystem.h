@@ -13,7 +13,7 @@ struct GameSoundSystem
 	SoundSystem soundSystem;
 	
 	explicit GameSoundSystem(AppLogFiles& logs, const PrefPathFinder& prefPath, const fs::path& soundsFileList, const fs::path& groupTagCfg, 
-								unsigned expectedSoundsNumber, unsigned expectedGroupTagsNumber);
+								unsigned expectedSoundsNumber, int expectedGroupTagsNumber);
 	~GameSoundSystem() = default;
 	GameSoundSystem( const GameSoundSystem& ) = delete;
 	GameSoundSystem& operator= ( const GameSoundSystem& ) = delete;

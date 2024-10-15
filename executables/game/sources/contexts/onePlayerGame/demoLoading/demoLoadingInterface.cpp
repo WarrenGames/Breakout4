@@ -64,8 +64,7 @@ void demosLoading::Interface::updateButtons(const Offset& mousePosition, bool mo
 
 void demosLoading::Interface::setErrorString(Essentials& essentials, const ReadError& e)
 {
-	const sdl2::Font arialFont{essentials.logs.error, ArialFontPath, FontMediumPointSize};
-	if( arialFont )
+	if( const sdl2::Font arialFont{essentials.logs.error, ArialFontPath, FontMediumPointSize} )
 	{
 		errorString.texture.loadBlendedText(essentials.logs, essentials.rndWnd, arialFont, e.what(), RedColor );
 		errorString.catchTexture();

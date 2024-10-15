@@ -14,8 +14,6 @@
 #include <algorithm>
 #include <cassert>
 
-constexpr SpriteSize CoinRect = { duels::CoinTextureSize, duels::CoinTextureSize };
-
 duels::CoinsThings::CoinsThings(AppLogFiles& logs, sdl2::RendererWindow& rndWnd, const std::vector< Offset >& spawnsCoord, const duels::LevelOptions& levelOptions):
 	coinsData( duels::CoinMaxNumber ),
 	coinTextures{logs, rndWnd, "data/textures/coinTexturesList.txt"},

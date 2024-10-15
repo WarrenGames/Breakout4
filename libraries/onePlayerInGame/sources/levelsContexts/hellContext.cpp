@@ -37,6 +37,7 @@ void hellLevel::startWithDemoRecording(Essentials& essentials, PlayerData& playe
 	{
 		if( LevelComponents levelComponents{essentials, playerData, 0 } )
 		{
+			demos::setStartingBricksMatrixForSavingLatter(levelComponents, demosMainPackage);
 			LevelInputs levelInputs{essentials, playerData};
 			hellLevel::playGame(essentials, levelInputs, levelComponents, playerData, hellPackage, quitMainMenu);
 			levelEnd::startLevelSum(essentials, levelComponents, playerData, quitMainMenu);

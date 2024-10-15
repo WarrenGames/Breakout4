@@ -11,14 +11,14 @@ namespace demosLoading{
 
 struct Interface
 {
-	const TextsBlocks languagesTexts;
-	const sdl2::Font fancyFont;
+	TextsBlocks languagesTexts;
+	sdl2::Font fancyFont;
 	demosLoading::DemoFilesDisplayer demoFilesDisplayer;
 	TextButton quitButton;
 	TextButton previousPage;
 	TextButton nextPage;
-	const TextureCombo titleText;
-	const TextureCombo noLoadedDemoText;
+	TextureCombo titleText;
+	TextureCombo noLoadedDemoText;
 	TextureCombo errorString;
 	bool quitMenu;
 	

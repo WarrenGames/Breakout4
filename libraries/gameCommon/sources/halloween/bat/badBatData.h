@@ -18,7 +18,7 @@ private:
 	std::size_t faceIndex;
 	unsigned moveState;
 	bool wingsMoveDown;
-	const std::vector< Offset > wingsOffsets;
+	std::vector< Offset > wingsOffsets;
 
 public:
 	BadBatData();

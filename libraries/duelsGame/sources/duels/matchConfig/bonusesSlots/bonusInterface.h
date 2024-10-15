@@ -17,14 +17,14 @@ struct LevelOptions;
 	
 struct BonusesInterface
 {
-	const TextsBlocks languagesTexts;
-	const sdl2::Font fancyFont;
+	TextsBlocks languagesTexts;
+	sdl2::Font fancyFont;
 	duels::SlotsData data;
 	std::vector< UintEditBox > editBoxes;
 	std::vector< TextureCombo > slotsTexts;
 	std::vector< TextButton > saveButtons;
 	std::vector< TextButton > loadButtons;
-	const TextureCombo screenTitle;
+	TextureCombo screenTitle;
 	TextButton quit;
 	sdl2::Mix_ChunkPtr saveWithSuccess;
 	

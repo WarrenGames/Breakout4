@@ -12,18 +12,18 @@ struct Essentials;
 
 struct CampaignChoiceGui
 {
-	const TextsBlocks languageTexts;
-	const sdl2::Font fancyFont;
-	const RaceLevelsCount shopRaceLevelCount;
-	const RaceLevelsCount stdRaceLevelCount;
-	const TextureCombo screenTitle;
-	const TextureCombo backgroundImage;
+	TextsBlocks languageTexts;
+	sdl2::Font fancyFont;
+	RaceLevelsCount shopRaceLevelCount;
+	RaceLevelsCount stdRaceLevelCount;
+	TextureCombo screenTitle;
+	TextureCombo backgroundImage;
 	TextButton shopRaceSelection;
 	TextButton noShopRaceSelection;
-	const TextureCombo shopRaceBackground;
-	const TextureCombo noShopRaceBackground;
-	const TextureCombo shopRaceLvlNumber;
-	const TextureCombo stdRaceLvlNumber;
+	TextureCombo shopRaceBackground;
+	TextureCombo noShopRaceBackground;
+	TextureCombo shopRaceLvlNumber;
+	TextureCombo stdRaceLvlNumber;
 	
 	explicit CampaignChoiceGui(Essentials& essentials);
 	~CampaignChoiceGui() = default;

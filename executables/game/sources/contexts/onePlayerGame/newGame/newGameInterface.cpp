@@ -73,7 +73,7 @@ void onePlGame::newGame::Interface::setIndexesAtInitialization()
 	if( bricksAnimation.wasLoadingPerfect() )
 	{
 		animIndexes[0] = 0;
-		animIndexes[1] = static_cast<int>( bricksAnimation.size() ) / 3;
-		animIndexes[2] = static_cast<int>( bricksAnimation.size() ) * 2 / 3;
+		animIndexes[1] = static_cast<unsigned>( bricksAnimation.size() ) / 3;
+		animIndexes[2] = static_cast<unsigned>( bricksAnimation.size() ) * 2 / 3;
 	}
 }

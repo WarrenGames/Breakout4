@@ -1,35 +1,32 @@
 #ifndef ONE_PLAYER_LEVEL_RIMS_H
 #define ONE_PLAYER_LEVEL_RIMS_H
 
-#include "texturing/texturesCombo.h"
 #include "matrices/matrix2D.h"
 #include "time/accurateTime.h"
+#include "SDL_rect.h"
 #include <vector>
 
-struct Essentials;
-
-class OnePlayerRims
+class OnePlayerRimsState
 {
 private:
-	TextureCombo rimTexture;
 	MatrixTemp2D<SDL_Rect> rimsCoordinates;
 	int activesRimsNumber;
 	std::vector< unsigned > rimsMovement;
 	AccurateTimeDelay rimMovementDelay;
 
 public:
-	explicit OnePlayerRims(Essentials& essentials, int rimsStartState);
-	~OnePlayerRims() = default;
-	OnePlayerRims( const OnePlayerRims& ) = delete;
-	OnePlayerRims& operator= ( const OnePlayerRims& ) = delete;
-	OnePlayerRims( OnePlayerRims&& ) = default;
-	OnePlayerRims& operator= ( OnePlayerRims&& ) = default;
+	explicit OnePlayerRimsState(int rimsStartState);
+	~OnePlayerRimsState() = default;
+	OnePlayerRimsState( const OnePlayerRimsState& ) = delete;
+	OnePlayerRimsState& operator= ( const OnePlayerRimsState& ) = delete;
+	OnePlayerRimsState( OnePlayerRimsState&& ) = default;
+	OnePlayerRimsState& operator= ( OnePlayerRimsState&& ) = default;
 	
 	void update();
 	int getRimsStatus() const;
+	unsigned getRimMovement(std::size_t index) const;
 	void changeStatus(int change);
-	void drawEverything(Essentials& essentials);
-	
+
 	std::vector<SDL_Rect>::const_iterator begin() const;
 	std::vector<SDL_Rect>::const_iterator end() const;
 	

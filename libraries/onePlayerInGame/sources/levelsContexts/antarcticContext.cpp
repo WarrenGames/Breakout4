@@ -37,6 +37,7 @@ void antarcticLevel::startWithDemoRecording(Essentials& essentials, PlayerData& 
 	{
 		if( LevelComponents levelComponents{essentials, playerData, antarcticPackage.pinguinsData.size() } )
 		{
+			demos::setStartingBricksMatrixForSavingLatter(levelComponents, demosMainPackage);
 			LevelInputs levelInputs{essentials, playerData};
 			antarcticLevel::playGame(essentials, levelInputs, levelComponents, playerData, antarcticPackage, quitMainMenu);
 			levelEnd::startLevelSum(essentials, levelComponents, playerData, quitMainMenu);

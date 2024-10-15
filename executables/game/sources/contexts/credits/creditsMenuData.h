@@ -13,8 +13,8 @@ namespace creditsMenu{
 class GraphicsData 
 {
 private:
-	const TextsBlocks texts;
-	const sdl2::Font arial;
+	TextsBlocks texts;
+	sdl2::Font arial;
 	std::vector< TextureCombo > graphicsTexts;
 
 public:

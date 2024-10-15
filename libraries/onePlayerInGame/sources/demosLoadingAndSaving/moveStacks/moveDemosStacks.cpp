@@ -18,10 +18,16 @@ void demos::giveStacksContentsToMainPackage(demos::DemoAntarcticPackage& demoAnt
 	demosMainPackage.antarcticDemoPackage.pinguinsQuacks = std::move( demoAntarcticPackage.pinguinsQuacks );
 }
 
+void demos::setStartingBricksMatrixForSavingLatter(const LevelComponents& levelComponents, demos::MainPackage& demosMainPackage)
+{
+	demosMainPackage.grid = levelComponents.grid;
+}
+
 void demos::giveStacksToLevelComponents(LevelComponents& levelComponents, LevelInputs& levelInputs, demos::MainPackage& demosMainPackage)
 {
 	levelInputs.moveMainPackageToInputs(demosMainPackage);
 	levelComponents.moveMainPackageToLevelComponents(demosMainPackage);
+	levelComponents.grid = demosMainPackage.grid;
 }
 
 void demos::giveStacksToLevelComponents(demos::DemoAntarcticPackage& demoAntarcticPackage, demos::MainPackage& demosMainPackage)

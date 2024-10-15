@@ -9,8 +9,8 @@ struct HalloweenConfig
 	std::vector<unsigned> pumpkinsSeed;
 	unsigned secondsBeforeNewPumpkin;
 	unsigned secondsSinceLastSpecialBonus;
-	const fs::path soundsListFilePath;
-	const fs::path channelsConfigFilePath;
+	fs::path soundsListFilePath;
+	fs::path channelsConfigFilePath;
 	bool canDisplayWallpaper;
 	bool wallpaperIsDaytime;
 	

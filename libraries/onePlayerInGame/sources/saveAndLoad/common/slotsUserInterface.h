@@ -14,11 +14,11 @@ struct PlayerData;
 class SlotsUserInterface
 {
 private:
-	const TextsBlocks localeTexts;
-	const sdl2::Font arial;
-	const sdl2::Font fancyFont;
+	TextsBlocks localeTexts;
+	sdl2::Font arial;
+	sdl2::Font fancyFont;
 	TextureCombo title;
-	const sdl2::TextureLoader slotSquareTexture;
+	sdl2::TextureLoader slotSquareTexture;
 	TextButton quitButton;
 	std::vector< GameSlotData > slotsData;
 	std::vector< SlotGraphics > slotsGraphics;

@@ -15,6 +15,8 @@ namespace demos{
 	struct TaggedDirectionStackData;
 	template<typename T>class Stack; 
 }
+template<typename T>class MatrixTemp2D;
+struct BrickData;
 
 namespace saveDemo{
 
@@ -23,8 +25,6 @@ namespace saveDemo{
 	void saveData(const fs::path& demoFilePath, std::ofstream& demoFile, const demos::MainPackage& mainPackage);
 
 	void saveCampaignType(const fs::path& demoFilePath, std::ofstream& demoFile, const demos::StartingData& startingData);
-	
-	void saveLevelIndex(const fs::path& demoFilePath, std::ofstream& demoFile, const demos::StartingData& startingData);
 	
 	void saveSkillLevel(const fs::path& demoFilePath, std::ofstream& demoFile, const demos::StartingData& startingData);
 	
@@ -55,6 +55,10 @@ namespace saveDemo{
 	void saveTaggedPositions(const fs::path& demoFilePath, std::ofstream& demoFile, const demos::Stack< demos::TaggedPositionStackData >& taggedPositions, const std::string& itemType, unsigned indexEnum);
 	
 	void saveTaggedDirections(const fs::path& demoFilePath, std::ofstream& demoFile, const demos::Stack< demos::TaggedDirectionStackData >& taggedDirections, const std::string& itemType, unsigned indexEnum);
+	
+	void saveMatrixSize(const fs::path& demoFilePath, std::ofstream& demoFile, const MatrixTemp2D< BrickData >& levelMatrix);
+	
+	void saveMatrixElements(const fs::path& demoFilePath, std::ofstream& demoFile, const MatrixTemp2D< BrickData >& levelMatrix);
 	
 	void throwWriteErrorExcept(const fs::path& demoFilePath, const std::string& toSaveItem);
 }

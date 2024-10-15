@@ -5,7 +5,7 @@
 #include <chrono>
 
 BonusPicker::BonusPicker(const std::vector<unsigned>& options):
-	bonusPack( std::accumulate(std::cbegin(options), std::cend(options), 0 ) ),
+	bonusPack( static_cast<std::size_t>( std::accumulate(std::cbegin(options), std::cend(options), 0 ) ) ),
 	mersenne{ static_cast<long unsigned int>(std::chrono::high_resolution_clock::now().time_since_epoch().count()) },
 	tempBonus{0}
 {

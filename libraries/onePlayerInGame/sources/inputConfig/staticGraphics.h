@@ -16,7 +16,7 @@ enum{ PushNewKey, PushNewButton };
 	
 struct StaticGraphics
 {
-	const TextureCombo screenBackground;
+	TextureCombo screenBackground;
 	std::vector< TextureCombo > alwaysDrawnTextures;
 	std::vector< TextureCombo > askInputTextures;
 	

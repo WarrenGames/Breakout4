@@ -79,7 +79,7 @@ bool duels::GlobalObject::canConsumeZoneSpecificFlag(unsigned playerNum)
 		return false;
 }
 
-void duels::GlobalObject::playZoneGreetingsSound(unsigned soundEnum, unsigned groupTag) const
+void duels::GlobalObject::playZoneGreetingsSound(unsigned soundEnum, int groupTag) const
 {
 	gameSoundSystem.soundSystem.soundPlayer.playSoundOnGroup(soundEnum, groupTag);
 }

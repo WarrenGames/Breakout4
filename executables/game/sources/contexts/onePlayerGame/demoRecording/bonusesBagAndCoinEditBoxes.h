@@ -28,8 +28,8 @@ enum{
 class BonusesAndCoinsEdition
 {
 private:
-	const TextsBlocks languagesTexts;
-	const sdl2::Font arial;
+	TextsBlocks languagesTexts;
+	sdl2::Font arial;
 	TextureCombo coinsText;
 	std::vector< TextureCombo > bonusesHelpTexts;
 	UintEditBox coinsNumberBox;

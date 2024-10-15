@@ -27,6 +27,7 @@ void stdlevel::startWithDemoRecording(Essentials& essentials, PlayerData& player
 {
 	if( LevelComponents levelComponents{essentials, playerData, 0} )
 	{
+		demos::setStartingBricksMatrixForSavingLatter(levelComponents, demosMainPackage);
 		LevelInputs levelInputs{essentials, playerData};
 		stdlevel::playGame(essentials, levelInputs, levelComponents, playerData, quitMainMenu);
 		levelEnd::startLevelSum(essentials, levelComponents, playerData, quitMainMenu);
@@ -79,7 +80,7 @@ void stdlevel::drawGame(Essentials& essentials, LevelComponents& levelComponents
 
 void stdlevel::closeGameWindow(const LevelInputs& levelInputs, bool& quitMainMenu)
 {
-	if( levelInputs.doesUserCloseWindow() )
+	if( levelInputs.doesUserCloseWindow() || levelInputs.getLastKeycode() == SDLK_ESCAPE )
 	{
 		quitMainMenu = true;
 	}

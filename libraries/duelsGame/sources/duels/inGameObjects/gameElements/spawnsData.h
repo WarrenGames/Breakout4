@@ -13,7 +13,7 @@ struct SpawnsData
 	unsigned maxElementNumber;
 	bool canSpawnElement;
 	AccurateTimeDelay newElementDelay;
-	const std::vector< Offset > spawnsCoordinates;
+	std::vector< Offset > spawnsCoordinates;
 
 	explicit SpawnsData(unsigned seconds, unsigned max, const std::vector< Offset >& coordinates);
 	~SpawnsData() = default;

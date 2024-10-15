@@ -6,28 +6,29 @@ namespace onePlGame{
 namespace demosFileIndex{
 	enum{
 		CampaignType,				// = 0
-		LevelIndex,
-		SkillLevel,					// = 2
-		PlayerLives, 
-		RacketSize,   				// = 4
-		Score,
-		RacketSpeed,				// = 6
-		BonusCoinNumber, 
-		RimStartState, 				// = 8
-		GivenBonusInBag, 
-		SquareSizeAtSaving,			// = 10
-		ActionEvent,
-		QuitLevelEvent,				// = 12
-		TraceCrossPosition,
-		RacketPosition,				// = 14
-		BallPosition,
-		BrickDestruction,			// = 16
-		CommonSoundEvent,
-		PinguinsPosition,			// = 18
-		PinguinsDirection,
-		PinguinsCreateAndDestroy,	// = 20
-		PinguinQuackSoundEvent,
-		IndexMax					// = 22
+		SkillLevel,					
+		PlayerLives, 				// = 2
+		RacketSize,   				
+		Score,						// = 4
+		RacketSpeed,
+		BonusCoinNumber, 			// = 6
+		RimStartState,
+		GivenBonusInBag, 			// = 8
+		SquareSizeAtSaving,
+		ActionEvent,				// = 10
+		QuitLevelEvent,
+		TraceCrossPosition,			// = 12
+		RacketPosition,				
+		BallPosition,				// = 14
+		BrickDestruction,
+		CommonSoundEvent,			// = 16
+		PinguinsPosition,			
+		PinguinsDirection,			// = 18
+		PinguinsCreateAndDestroy,	
+		PinguinQuackSoundEvent,		// = 20
+		MatrixSize,					
+		MatrixElement,				// = 22
+		IndexMax					// = 23
 	};
 }
 

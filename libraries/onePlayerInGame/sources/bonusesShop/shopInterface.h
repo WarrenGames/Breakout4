@@ -18,9 +18,9 @@ namespace onePlayerShop{
 
 struct ShopInterface
 {
-	const TextsBlocks bonusesTexts;
-	const sdl2::Font fancyFont;
-	const TextureCombo backgroundWallpaper;
+	TextsBlocks bonusesTexts;
+	sdl2::Font fancyFont;
+	TextureCombo backgroundWallpaper;
 	std::vector< TextureCombo > texts;
 	std::vector< TextureCombo > bagIcons;
 	BonusesCountGraphics bonusesCount;

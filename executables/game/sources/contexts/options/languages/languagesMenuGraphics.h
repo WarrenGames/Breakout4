@@ -16,14 +16,14 @@ struct LanguageOptionsGraphics
 	bool isLoadingPerfect;
 	bool hasLanguageChanged;
 	std::size_t langIndex;
-	const TextsBlocks languagesStrings;
-	const sdl2::Font fancyFont;
+	TextsBlocks languagesStrings;
+	sdl2::Font fancyFont;
 	std::vector< TextButton > languagesButtons;
 	std::vector< TextureCombo > languagesTexts;
-	const TextureCombo startingLanguage;
-	const TextureCombo screenTitle;
-	const TextureCombo restartHint;
-	const TextureCombo selectHere;
+	TextureCombo startingLanguage;
+	TextureCombo screenTitle;
+	TextureCombo restartHint;
+	TextureCombo selectHere;
 	std::vector< std::string > languagesList;
 	
 	explicit LanguageOptionsGraphics(Essentials& essentials);

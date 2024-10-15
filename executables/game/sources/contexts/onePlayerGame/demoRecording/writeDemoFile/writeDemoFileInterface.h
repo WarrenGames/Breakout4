@@ -26,9 +26,9 @@ namespace demos{
 	
 	struct WriteDemoFileInterface
 	{
-		const TextsBlocks languagesTexts;
-		const sdl2::Font fancyFont;
-		const sdl2::Font arialFont;
+		TextsBlocks languagesTexts;
+		sdl2::Font fancyFont;
+		sdl2::Font arialFont;
 		std::string fileName;
 		TextureCombo titleText;
 		TextureCombo fileNameText;

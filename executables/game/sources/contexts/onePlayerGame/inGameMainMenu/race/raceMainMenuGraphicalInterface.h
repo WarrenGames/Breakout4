@@ -21,12 +21,12 @@ namespace onePlGame{
 		struct Interface
 		{
 			unsigned campaignType;
-			const TextsBlocks languageTexts;
-			const sdl2::Font fancyFont;
-			const TextureCombo screenTitle;
+			TextsBlocks languageTexts;
+			sdl2::Font fancyFont;
+			TextureCombo screenTitle;
 			std::vector< TextButton > buttons;
 			TextButton shopButton;
-			const TextureCombo screenBackground;
+			TextureCombo screenBackground;
 			
 			explicit Interface(Essentials& essentials, unsigned campaignType_);
 			~Interface() = default;

@@ -17,12 +17,12 @@ enum{ EndAnnouncement, HereIsYourScore, CheckUpdateOut, Max };
 	
 struct Interface
 {
-	const sdl2::Font fancyFont;
-	const TextsBlocks localTexts;
-	const TextureCombo wallpaper;
-	const TextureCombo scoreText;
-	const TextureCombo greatings;
-	const TextureCombo checkOutWebSite;
+	sdl2::Font fancyFont;
+	TextsBlocks localTexts;
+	TextureCombo wallpaper;
+	TextureCombo scoreText;
+	TextureCombo greatings;
+	TextureCombo checkOutWebSite;
 	
 	Interface(Essentials& essentials, const PlayerData& playerData);
 	~Interface() = default;

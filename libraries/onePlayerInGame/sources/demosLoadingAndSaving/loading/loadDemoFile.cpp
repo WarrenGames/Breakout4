@@ -56,9 +56,6 @@ void loadDemo::triggerAccordingToValue(const fs::path& demoFilePath, demos::Main
 		case onePlGame::demosFileIndex::CampaignType:
 			loadDemo::readCampaignType(demoFilePath, playerData, fileLineNumber, lineStream);
 			break;
-		case onePlGame::demosFileIndex::LevelIndex:
-			loadDemo::readLevelIndex(demoFilePath, playerData, fileLineNumber, lineStream);
-			break;
 		case onePlGame::demosFileIndex::SkillLevel:
 			loadDemo::readSkillLevel(demoFilePath, playerData, fileLineNumber, lineStream);
 			break;
@@ -119,6 +116,12 @@ void loadDemo::triggerAccordingToValue(const fs::path& demoFilePath, demos::Main
 		case onePlGame::demosFileIndex::PinguinQuackSoundEvent:
 			loadDemo::readSoundEvent(demoFilePath, demosMainPackage.antarcticDemoPackage.pinguinsQuacks, fileLineNumber, lineStream, "pinguins quack sound event");
 			break;
+		case onePlGame::demosFileIndex::MatrixSize:
+			loadDemo::readMatrixSize(demoFilePath, demosMainPackage.grid, fileLineNumber, lineStream);
+			break;
+		case onePlGame::demosFileIndex::MatrixElement:
+			loadDemo::readMatrixElementData(demoFilePath, demosMainPackage.grid, fileLineNumber, lineStream);
+			break;
 		default:
 			loadDemo::throwLineReadError(demoFilePath, fileLineNumber, "Bad index value: " + std::to_string( triggerValue) + " .");
 			break;
@@ -149,18 +152,6 @@ void loadDemo::readCampaignType(const fs::path& demoFilePath, PlayerData& player
 	}
 	else{
 		loadDemo::throwLineReadError(demoFilePath, fileLineNumber, "Campaign type");
-	}
-}
-
-void loadDemo::readLevelIndex(const fs::path& demoFilePath, PlayerData& playerData, std::size_t fileLineNumber, std::istringstream& lineStream)
-{
-	unsigned levelIndex{0};
-	if( lineStream >> levelIndex )
-	{
-		playerData.levelIndex = levelIndex;
-	}
-	else{
-		loadDemo::throwLineReadError(demoFilePath, fileLineNumber, "level index");
 	}
 }
 
@@ -410,6 +401,37 @@ void loadDemo::readTaggedDirectionEvent(const fs::path& demoFilePath, demos::Sta
 	}
 	else{
 		loadDemo::throwLineReadError(demoFilePath, fileLineNumber, itemType);
+	}
+}
+
+void loadDemo::readMatrixSize(const fs::path& demoFilePath, MatrixTemp2D< BrickData >& levelMatrix, std::size_t fileLineNumber, std::istringstream& lineStream)
+{
+	Coord2D matrixSize;
+	if( lineStream >> matrixSize.width >> matrixSize.height )
+	{
+		levelMatrix.resize(matrixSize);
+	}
+	else{
+		loadDemo::throwLineReadError(demoFilePath, fileLineNumber, "Level matrix size");
+	}
+}
+
+void loadDemo::readMatrixElementData(const fs::path& demoFilePath, MatrixTemp2D< BrickData >& levelMatrix, std::size_t fileLineNumber, std::istringstream& lineStream)
+{
+	BrickData brickData;
+	Coord2D coordinates;
+	if( lineStream >> coordinates.height >> coordinates.width >> brickData.index >> brickData.property )
+	{
+		if( levelMatrix.isInsideBoundaries(coordinates) )
+		{
+			levelMatrix(coordinates) = brickData;
+		}
+		else{
+			loadDemo::throwLineReadError(demoFilePath, fileLineNumber, "wrong level matrix coordinates");
+		}
+	}
+	else{
+		loadDemo::throwLineReadError(demoFilePath, fileLineNumber, "Level matrix element line");
 	}
 }
 

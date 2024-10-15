@@ -21,7 +21,7 @@ set( CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON )
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmakeModules)
 
 #set this path to the built WarrenGamesCustomLibs libraries directory (needed below at line 51) (use a canonical path, not a relative one)
-set( WARREN_LIBS_BUILDING_PATH "/media/antoine/projetsLinux/projects/warrenLibs/cmake/builtCustomLibs" )
+set( WARREN_LIBS_BUILDING_PATH "" )
 
 set( WARREN_STATIC_LIBS_DIR "builtArchives" )
 set( WARREN_LIBS_INCLUDES_PATH "${WARREN_LIBS_BUILDING_PATH}/includes" )

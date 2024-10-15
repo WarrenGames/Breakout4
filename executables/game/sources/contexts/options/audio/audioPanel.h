@@ -13,9 +13,9 @@ class PrefPathFinder;
 
 struct AudioPanelGraphics
 {
-	const TextsBlocks texts;
-	const sdl2::Font fancyFont;
-	const TextureCombo background;
+	TextsBlocks texts;
+	sdl2::Font fancyFont;
+	TextureCombo background;
 	SoundConfig sound;
 	MusicConfig music;
 	

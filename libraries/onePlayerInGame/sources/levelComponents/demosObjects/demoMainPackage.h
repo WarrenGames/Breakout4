@@ -8,6 +8,7 @@
 #include "demos/sounds/soundsStackData.h"
 #include "demos/templates/demoStack.h"
 #include "levelComponents/demosObjects/antarcticDemoPackage.h"
+#include "matrices/matrix2D.h"
 
 struct AppLogFiles;
 class PrefPathFinder;
@@ -25,6 +26,7 @@ struct MainPackage
 	demos::Stack< demos::Matrix2DAction > brickDestruction;
 	demos::Stack< demos::SoundStackData > soundsStack;
 	demos::DemoAntarcticPackage antarcticDemoPackage;
+	MatrixTemp2D< BrickData > grid;
 	unsigned demoKind;
 	
 	explicit MainPackage(AppLogFiles& logs, const PrefPathFinder& prefPath, unsigned gameKind);
