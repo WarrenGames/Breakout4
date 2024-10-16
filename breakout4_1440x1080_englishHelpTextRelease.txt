@@ -1,0 +1,39 @@
+The official web page of this project: https://www.ant01.fr/index.php/jeux-ant01/projet-breakout4
+
+This release concerns the Breakout4 with 1440x1080 pixels windows resolutions only.
+
+Details on the precompiled binaries of the breakout4 game. There are explanations about compiling sources by yourself just below.
+
+The binaries have been compiled with Mingw64 compiler which you can download at this address: https://www.winlibs.com
+
+These Breakout4 binaries are made to be played ideally in full screen if you have an HD screen,
+but you can choose between a windows or full screen game, just carefully read the introduction screen, that tells
+you which key to press to switch to windowed or full screen mode.
+
+Playing the game by compiling the sources by yourself is rather simple:
+- Download the sources with the zip format (ideally for windows users) or tar.gz (for linux users) by clicking
+	on 'Source code' in the release screen.
+- Unzip the archive in a directory of your choice and read carefully the file in the top directory named
+	'compileSourcesHowTo.txt'. In particular, you should set the cmake command line value 'SQUARE_SIZE' to 72 for 
+        the x72 textures i.e. the 1440x1080 game resolution.
+- Once the binaries are compiled, download 'breakout4_textures_x72_for1440.7z' then if you are under windows:
+	'dataWindowsEndline_crlf.7z' or 'dataUnixEndline_linefeed.7z' instead if you want to play the game under linux.
+	Download the file 'fontsAndSounds.7z' too.
+
+- Choice a directory for the final game/application (named 'AppDir' next to make things simple).
+- Copy the compiled binaries to AppDir.
+- Unzip 'breakout4_textures_x72_for1440_vX.X.X.7z' in AppDir.
+- Unzip 'fontsAndSounds_vX.X.X.7z' in AppDir.
+- Unzip 'dataWindowsEndline_crlf_vX.X.X.7z' or 'dataUnixEndLine_linefeed_vX.X.X.7z' in AppDir.
+
+- If everything went fine you'd have the following directory tree in AppDir
+
+AppDir
+	|-data
+	|-fonts
+	|-licenses
+	|-musics
+	|-sounds
+	|-textures
+	
+- Then run 'breakout4_game' or 'breakout4_game.exe' to play the game. If you want to use an icon to run the game, don't forget to indicate 'AppDir' as a working directory for the game.

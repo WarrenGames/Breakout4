@@ -1,0 +1,38 @@
+La page web officiel de ce projet: https://www.ant01.fr/index.php/jeux-ant01/projet-breakout4
+
+Les binaires ont été compilés avec Mingw 14.2.0 téléchargé à cette adresse: https://www.winlibs.com
+
+Ces binaires du jeu Breakout4 sont fait pour être joué idéalement en plein écran si vous êtes en écran HD,
+mais on peut sélectionner le mode fenêtré au démarrage du jeu si votre écran à une définition supérieure,
+lisez attentivement l'écran d' accueil du jeu qui vous indique sur quelle touche appuyer pour choisir le
+mode plein écran ou fenêtré.
+
+Pour jouer au jeu en compilant vous-même les sources, c'est assez simple:
+- Téléchargez les sources, au choix au format zip (pour windows idéalement) ou bien tar.gz (pour linux) en 
+	choisissant 'Source code' au bas de cet écran 'release'.
+- Décompressez l' archive dans un répertoire de votre choix et lisez le fichier à la racine nommé
+	'compileSourcesHowTo.txt'. En particulier, vous devriez fixer la variable de la ligne de commande cmake 
+	'SQUARE_SIZE' à 72 for les textures x72 c'est à dire les textures pour jouer en 1440x1080 pixels.
+- Une fois les binaires compilées, téléchargez breakout4_textures_x72_for1440.7z, puis si vous êtes sous
+	windows: 'dataWindowsEndline_crlf.7z' ou si vous êtes sous linux: 'dataUnixEndline_linefeed.7z' puis
+	fontsAndSounds.7z
+- Déterminez un répertoire pour [le jeu/l' application] (nommé 'AppDir' par la suite).
+- Copiez les binaires compilés vers le répertoire AppDir
+- Décompressez 'breakout4_textures_x72_for1440.7z' vers AppDir
+- Décompressez 'fontsAndSounds.7z' vers AppDir également
+- Puis selon l'archive et votre système d'exploitation décompressez 'dataWindowsEndline_crlf.7z' ou bien
+	'dataUnixEndLine_linefeed.7z' vers AppDir.
+	
+- Si tout s'est bien passé vous devriez avoir l'arborescence suivante dans AppDir:
+
+AppDir
+	|-data
+	|-fonts
+	|-licenses
+	|-musics
+	|-sounds
+	|-textures
+	
+- Il ne vous reste plus qu' a lancer Breakout4 en lançant le binaire 'breakout4_game.exe' ou 'breakout_game'
+	selon que vous soyez sous linux ou windows. Si vous voulez utiliser une icone pour lancer le jeu, n'oubliez 
+	pas d'indiquer AppDir comme répertoire de travail.
