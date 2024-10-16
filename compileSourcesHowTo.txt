@@ -8,9 +8,10 @@ The Breakout4 project has four dependencies:
 - The SimpleDirectMediaLayer v2.x library (also called 'SDL2')
 - The WxWidgets framework (optional)
 - The CMake build tool.
-- The WarrenGamesCustomLibs, that you can download on my repository (infos on how to use them are indicated
-	in the 'compileSourcesHowTo.txt' of theses libraries). You will have to set in the main CMakeLists.txt of
-	the Breakout4 project the path of the built WarrenGamesCustomLibs libraries for the following variable:
+- Optional (and not needed if you choose the 'devWithAllLibs' branch), The WarrenGamesCustomLibs, that you can 
+	download on my repository (infos on how to use them are indicated in the 'compileSourcesHowTo.txt' of 
+	theses libraries). You will have to set in the main CMakeLists.txt of the Breakout4 project the path of 
+	the built WarrenGamesCustomLibs libraries for the following variable:
 	'WARREN_LIBS_BUILDING_PATH' (line 18)
 
 The source code is divided in several libraries (in the 'libraries' sub directory) and some executables 
